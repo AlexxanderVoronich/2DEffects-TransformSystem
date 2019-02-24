@@ -42,6 +42,17 @@ namespace Assets.EffectsScripts
 
             if (m_config.m_type == eEffectType.COMPOUND_TYPE)
             {
+                var dt = Time.deltaTime;
+
+                if (m_config.Delay > 0)
+                {
+                    m_config.Delay -= dt;
+                    if (m_config.Delay > 0)
+                    {
+                        return;
+                    }
+                }
+
                 if (m_parts.Count == 0)
                 {
                     m_config.Is_end = true;
