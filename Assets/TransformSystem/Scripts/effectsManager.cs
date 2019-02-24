@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using Assets.EffectsScripts;
+using UnityEngine.UI;
 
 public class effectsManager : MonoBehaviour
 {
@@ -13,12 +14,12 @@ public class effectsManager : MonoBehaviour
         _root_config.Delay = _root_config.m_delay_value;
         if (_root_config.m_type != eEffectType.COMPOUND_TYPE)
         {
-            if(_root_config.m_object == null)
+            if(_root_config.m_control_object == null)
             {
-                Debug.unityLogger.Log("effectsManager", "Not Compound Effect mash have control object: " + _root_config.m_name);
+                Debug.unityLogger.Log("effectsManager", "Not Compound Effect must have control object: " + _root_config.m_name + "/" + _root_config.m_type.ToString());
                 return null;
             }
-            _root_config.Is_visible_state = _root_config.m_object.activeSelf;
+            _root_config.Is_visible_state = _root_config.m_control_object.activeSelf;
         }
 
         if (_root_config.m_type == eEffectType.TERMINAL_LOCAL_POS)
@@ -30,7 +31,7 @@ public class effectsManager : MonoBehaviour
                     _root_config.m_obj_finish_pos.transform.localPosition.y);
             }
 
-            _root_config.m_start_pos = _root_config.m_object.transform.localPosition;
+            _root_config.m_start_pos = _root_config.m_control_object.transform.localPosition;
         }
         else if (_root_config.m_type == eEffectType.TERMINAL_GLOBAL_POS)
         {
@@ -41,61 +42,94 @@ public class effectsManager : MonoBehaviour
                     _root_config.m_obj_finish_pos.transform.position.y);
             }
 
-            _root_config.m_start_pos = _root_config.m_object.transform.position;
+            _root_config.m_start_pos = _root_config.m_control_object.transform.position;
         }
-
-        cRunEffect root_effect = cRunEffect.create(_root_config);
-
-
-        foreach(Transform child in _root_config.gameObject.transform)
+        else if (_root_config.m_type == eEffectType.TERMINAL_CHANGE_SPRITE)
         {
-            effectConfig child_config = child.GetComponent<effectConfig>();
-            if (child_config != null && !child_config.m_is_switch_off)
+            if (_root_config.m_control_object)
             {
-                cRunEffect child_effect = generateEffectFrom(child_config);
-                root_effect.add(child_effect);
+                Image img = _root_config.m_control_object.GetComponent<Image>();
+                if (img != null)
+                {
+                    _root_config.Old_sprite = img.sprite;
+                }
             }
         }
 
+        cRunEffect root_effect = null;
+        if (!_root_config.m_is_switch_off)
+        {
+            root_effect = cRunEffect.create(_root_config);
+
+            foreach (Transform child in _root_config.gameObject.transform)
+            {
+                effectConfig child_config = child.GetComponent<effectConfig>();
+                if (child_config != null && !child_config.m_is_switch_off)
+                {
+                    cRunEffect child_effect = generateEffectFrom(child_config);
+                    if (child_effect != null)
+                    {
+                        root_effect.add(child_effect);
+                    }
+                }
+            }
+        }
 
         return root_effect;
     }
 
-    public static void resetConfig(effectConfig _root_config, bool _is_necessary)
+    public static void resetConfig(effectConfig _root_config)
     {
+        if(_root_config == null)
+        {
+            return;
+        }
+
         if (_root_config.m_type == eEffectType.TERMINAL_LOCAL_POS)
         {
-            if (_root_config.m_is_reset || _is_necessary)
+            if (_root_config.m_is_child_node_reset_sign)
             {
-                _root_config.m_object.transform.localPosition = _root_config.m_start_pos;
-                _root_config.m_object.SetActive(_root_config.Is_visible_state);
+                _root_config.m_control_object.transform.localPosition = _root_config.m_start_pos;
+                _root_config.m_control_object.SetActive(_root_config.Is_visible_state);
             }
         }
         else if (_root_config.m_type == eEffectType.TERMINAL_GLOBAL_POS)
         {
-            if (_root_config.m_is_reset || _is_necessary)
+            if (_root_config.m_is_child_node_reset_sign)
             {
-                _root_config.m_object.transform.position = _root_config.m_start_pos;
-                _root_config.m_object.SetActive(_root_config.Is_visible_state);
+                _root_config.m_control_object.transform.position = _root_config.m_start_pos;
+                _root_config.m_control_object.SetActive(_root_config.Is_visible_state);
             }
         }
         else if (_root_config.m_type == eEffectType.TERMINAL_SCALE)
         {
-            if (_root_config.m_is_reset || _is_necessary)
+            if (_root_config.m_is_child_node_reset_sign)
             {
-                _root_config.m_object.transform.localScale = _root_config.m_start_scale;
-                _root_config.m_object.SetActive(_root_config.Is_visible_state);
+                _root_config.m_control_object.transform.localScale = _root_config.m_start_scale;
+                _root_config.m_control_object.SetActive(_root_config.Is_visible_state);
             }
         }
         else if (_root_config.m_type == eEffectType.TERMINAL_ARRIVE)
         {
-            if (_root_config.m_is_reset || _is_necessary)
-                _root_config.m_object.SetActive(false);
+            if (_root_config.m_is_child_node_reset_sign)
+                _root_config.m_control_object.SetActive(false);
         }
         else if (_root_config.m_type == eEffectType.TERMINAL_HIDE)
         {
-            if (_root_config.m_is_reset || _is_necessary)
-                _root_config.m_object.SetActive(true);
+            if (_root_config.m_is_child_node_reset_sign)
+                _root_config.m_control_object.SetActive(true);
+        }
+        else if (_root_config.m_type == eEffectType.TERMINAL_CHANGE_SPRITE)
+        {
+            if (_root_config.m_is_child_node_reset_sign)
+            {
+                var img = _root_config.m_control_object.GetComponent<Image>();
+                if(img!= null && _root_config.Old_sprite != null)
+                {
+                    img.sprite = _root_config.Old_sprite;
+                }
+                _root_config.m_control_object.SetActive(_root_config.Is_visible_state);
+            }
         }
 
         foreach (Transform child in _root_config.gameObject.transform)
@@ -103,7 +137,7 @@ public class effectsManager : MonoBehaviour
             effectConfig child_config = child.GetComponent<effectConfig>();
             if (child_config != null)
             {
-                resetConfig(child_config, _is_necessary);
+                resetConfig(child_config);
             }
         }
     }
@@ -126,8 +160,11 @@ public class effectsManager : MonoBehaviour
                 removeEffect(ef.Key);
                 config.invokeLast();
                 config.clearConfig();
-    
-                resetConfig(config, false);                
+
+                if (config.m_is_root_reset_permission)
+                {
+                    resetConfig(config);
+                }   
                 return;
             }
         }
@@ -157,9 +194,12 @@ public class effectsManager : MonoBehaviour
         if (!isEffectRun(_effect_name))
         {
             cRunEffect root_effect = effectsManager.generateEffectFrom(effect_config);
-            //effect_config.gameObject.SetActive(true);
-            effect_config.m_final_action += _action;
-            addEffect(effect_config.m_name, root_effect);
+
+            if (root_effect != null)
+            {
+                effect_config.m_final_action += _action;
+                addEffect(effect_config.m_name, root_effect);
+            }
         }
     }
 

@@ -9,7 +9,7 @@ public class scriptAppLogic : MonoBehaviour {
     
     [SerializeField] private effectsManager m_effect_manager = null;
     private effectsStorage m_effects_storage = null;
-    [SerializeField] private GameObject m_library_panel = null;
+    [SerializeField] private GameObject m_final_panel = null;
     [SerializeField] private Button m_button_start_1= null;
     [SerializeField] private Button m_button_start_2= null;
     [SerializeField] private Button m_button_start_3= null;
@@ -90,12 +90,6 @@ public class scriptAppLogic : MonoBehaviour {
         }
     }
 
-    private void restoreEffectVisibilityForName(string _name)
-    {
-        var effect_config = m_effects_storage.getEffect(_name);
-        effect_config.gameObject.SetActive(true);
-    }
-
     public void clickStartEffect(int _id)
     {
         switch (_id)
@@ -126,6 +120,8 @@ public class scriptAppLogic : MonoBehaviour {
             case 4:
                 {
                     m_effect_manager.startEffectForName("ExampleEffectCompound_g4", effectFinalAction);
+                    m_effect_manager.startEffectForName("ExampleEffectCompound_g4_v2", effectFinalAction);
+
                     m_panel_select.SetActive(false);
                     m_button_start_4.gameObject.SetActive(false);
                     break;
@@ -149,7 +145,7 @@ public class scriptAppLogic : MonoBehaviour {
     {
         if (!m_effect_manager.isExistRunEffect())
         {
-            m_library_panel.SetActive(true);
+            m_final_panel.SetActive(true);
         }
     }
 
@@ -159,42 +155,45 @@ public class scriptAppLogic : MonoBehaviour {
         {
             case 1:
                 {
-                    m_library_panel.SetActive(false);
-                    restoreEffectVisibilityForName("ExampleEffectCompound1");
-                    restoreEffectVisibilityForName("ExampleEffectCompound2");
-                    restoreEffectVisibilityForName("ExampleEffectCompound3");
+                    m_final_panel.SetActive(false);
                     m_button_start_1.gameObject.SetActive(true);
                     m_panel_select.SetActive(true);
                     break;
                 }
             case 2:
                 {
-                    m_library_panel.SetActive(false);
-                    restoreEffectVisibilityForName("ExampleEffectCompound_g2");
+                    m_final_panel.SetActive(false);
                     m_button_start_2.gameObject.SetActive(true);
                     m_panel_select.SetActive(true);
 
                     var effect_config = m_effects_storage.getEffect("ExampleEffectCompound_g2");
-                    effectsManager.resetConfig(effect_config, true);
+                    effectsManager.resetConfig(effect_config);
                     break;
                 }
             case 3:
                 {
-                    m_library_panel.SetActive(false);
-                    restoreEffectVisibilityForName("ExampleEffectCompound_g3");
+                    m_final_panel.SetActive(false);
                     m_button_start_3.gameObject.SetActive(true);
                     m_panel_select.SetActive(true);
                     break;
                 }
             case 4:
                 {
-                    m_library_panel.SetActive(false);
-                    //restoreEffectVisibilityForName("ExampleEffectCompound_g4");
+                    m_final_panel.SetActive(false);
                     m_button_start_4.gameObject.SetActive(true);
                     m_panel_select.SetActive(true);
 
                     var effect_config = m_effects_storage.getEffect("ExampleEffectCompound_g4");
-                    effectsManager.resetConfig(effect_config, true);
+                    if (effect_config != null)
+                    {
+                        effectsManager.resetConfig(effect_config);
+                    }
+                    
+                    var effect_config_2 = m_effects_storage.getEffect("ExampleEffectCompound_g4_v2");
+                    if (effect_config_2 != null)
+                    {
+                        effectsManager.resetConfig(effect_config_2);
+                    }
                     break;
                 }
             case 5:
@@ -214,6 +213,6 @@ public class scriptAppLogic : MonoBehaviour {
         selectGroup(5);
 
         var effect_config = m_effects_storage.getEffect("EffectCompoundChest");
-        effectsManager.resetConfig(effect_config, true);
+        effectsManager.resetConfig(effect_config);
     }
 }
