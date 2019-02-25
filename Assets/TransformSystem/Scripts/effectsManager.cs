@@ -73,6 +73,14 @@ public class effectsManager : MonoBehaviour
                 }
             }
         }
+        else if (_root_config.m_type == eEffectType.TERMINAL_FILL_RECT)
+        {
+            if (_root_config.m_control_object)
+            {
+
+            }
+        }
+
 
         cRunEffect root_effect = null;
         if (!_root_config.m_is_switch_off)
@@ -151,6 +159,18 @@ public class effectsManager : MonoBehaviour
                 _root_config.m_control_object.SetActive(_root_config.Is_visible_state);
             }
         }
+        else if (_root_config.m_type == eEffectType.TERMINAL_FILL_RECT)
+        {
+            if (_root_config.m_is_child_node_reset_sign)
+            {
+                var img = _root_config.m_control_object.GetComponent<Image>();
+                if (img != null)
+                {
+                }
+                _root_config.m_control_object.SetActive(_root_config.Is_visible_state);
+            }
+        }
+
 
         foreach (Transform child in _root_config.gameObject.transform)
         {

@@ -161,6 +161,7 @@ namespace Assets.EffectsScripts
                     case eEffectType.TERMINAL_ARRIVE:
                     case eEffectType.TERMINAL_HIDE:
                     case eEffectType.TERMINAL_CHANGE_SPRITE:
+                    case eEffectType.TERMINAL_FILL_RECT:
                         {
                             break;
                         }
@@ -234,6 +235,20 @@ namespace Assets.EffectsScripts
                 effect.m_config.m_mode = eEffectMode.TERMINAL_MODE;
                 effect.m_behaviour = effect.behaviour_type_change_sprite;
             }
+            else if (_config.m_type == eEffectType.TERMINAL_FILL_RECT)
+            {
+                effect.m_config.m_mode = eEffectMode.TERMINAL_MODE;
+                effect.m_behaviour = effect.behaviour_type_fill_rect;
+                if (effect.m_config.m_is_state_normalize)
+                {
+                    var img = effect.m_config.m_control_object.GetComponent<Image>();
+                    if (img != null)
+                    {
+                        img.fillAmount = 0;
+                    }
+                }
+            }
+
             return effect;
         }
 
@@ -453,6 +468,58 @@ namespace Assets.EffectsScripts
             if(img != null)
             {
                 img.sprite = _config.m_new_sprite;
+            }
+            return true;
+        }
+
+        public bool behaviour_type_fill_rect(effectConfig _config)
+        {
+            var dt = Time.deltaTime;
+
+            if (_config.Delay > 0)
+            {
+                _config.Delay -= dt;
+                if (_config.Delay > 0)
+                {
+                    return false;
+                }
+            }
+
+            _config.m_current_time += dt;
+            Image img = _config.m_control_object.GetComponent<Image>();
+            
+            if (_config.Is_begin)
+            {
+                _config.Is_begin = false;
+                _config.m_control_object.SetActive(true);
+            }
+
+            if (_config.m_current_time >= _config.m_max_time)
+            {
+                _config.m_current_time = _config.m_max_time;
+                _config.Is_end = true;
+
+                if (img != null)
+                {
+                    img.fillAmount = 1;
+                }
+
+            }
+            else
+            {
+                float delta_time = _config.m_current_time;
+                float percents = delta_time / _config.m_max_time;
+
+                /*if (m_internal_tween_algorithm != null)
+                {
+                    percents = (float)m_internal_tween_algorithm(percents);
+                }*/
+
+
+                if (img != null)
+                {
+                    img.fillAmount = percents;
+                }
             }
             return true;
         }

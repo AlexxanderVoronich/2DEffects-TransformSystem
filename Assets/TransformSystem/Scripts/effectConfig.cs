@@ -18,7 +18,8 @@ namespace Assets.EffectsScripts
         TERMINAL_SCALE,
         TERMINAL_ARRIVE,
         TERMINAL_HIDE,
-        TERMINAL_CHANGE_SPRITE
+        TERMINAL_CHANGE_SPRITE,
+        TERMINAL_FILL_RECT
     };
 }
 
