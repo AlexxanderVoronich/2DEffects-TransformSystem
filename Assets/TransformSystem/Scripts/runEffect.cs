@@ -277,14 +277,14 @@ namespace Assets.EffectsScripts
                 float delta_time = _config.m_current_time;
                 float percents = delta_time / _config.m_max_time;
 
-                var main_move = (_config.m_finish_pos - _config.m_start_pos);
-                double diff_progress = percents - _config.Last_progress;
-                _config.Last_progress = percents;
-
                 if (m_internal_tween_algorithm != null)
                 {
                     percents = (float)m_internal_tween_algorithm(percents);
                 }
+
+                var main_move = (_config.m_finish_pos - _config.m_start_pos);
+                double diff_progress = percents - _config.Last_progress;
+                _config.Last_progress = percents;
 
                 Vector2 delta_pos = main_move * (float)diff_progress;
                 _config.m_current_pos += delta_pos;

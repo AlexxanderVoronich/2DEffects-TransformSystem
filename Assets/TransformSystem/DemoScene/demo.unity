@@ -2905,10 +2905,10 @@ MonoBehaviour:
   m_obj_finish_pos: {fileID: 887393596}
   m_new_sprite: {fileID: 0}
   m_arc_settings:
-    m_arc_shift: {x: -1, y: 0.5}
+    m_arc_shift: {x: -2, y: 2}
     m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
-  m_tween_algorithm_type: 0
+  m_tween_algorithm_type: 3
 --- !u!1 &549838583
 GameObject:
   m_ObjectHideFlags: 0
@@ -3792,7 +3792,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1380633126}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4241,7 +4241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: EffectMoveChest
   m_mode: 0
-  m_type: 2
+  m_type: 3
   m_control_object: {fileID: 1133842650}
   m_max_time: 3
   m_current_time: 0
@@ -4259,7 +4259,7 @@ MonoBehaviour:
   m_obj_finish_pos: {fileID: 1091295759}
   m_new_sprite: {fileID: 0}
   m_arc_settings:
-    m_arc_shift: {x: 0, y: 0}
+    m_arc_shift: {x: -2, y: 2}
     m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 1
@@ -6616,6 +6616,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 873845545}
+  - {fileID: 1820311558}
   - {fileID: 735694489}
   m_Father: {fileID: 1870804697}
   m_RootOrder: 0
@@ -6979,10 +6980,10 @@ MonoBehaviour:
   m_obj_finish_pos: {fileID: 2025845982}
   m_new_sprite: {fileID: 0}
   m_arc_settings:
-    m_arc_shift: {x: -1, y: 0.5}
+    m_arc_shift: {x: -2, y: 2}
     m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
-  m_tween_algorithm_type: 0
+  m_tween_algorithm_type: 3
 --- !u!1 &1512317943
 GameObject:
   m_ObjectHideFlags: 0
@@ -7225,10 +7226,10 @@ MonoBehaviour:
   m_obj_finish_pos: {fileID: 66598865}
   m_new_sprite: {fileID: 0}
   m_arc_settings:
-    m_arc_shift: {x: -1, y: 0.5}
+    m_arc_shift: {x: -3, y: 3}
     m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
-  m_tween_algorithm_type: 0
+  m_tween_algorithm_type: 3
 --- !u!1 &1633546298
 GameObject:
   m_ObjectHideFlags: 0
@@ -8401,9 +8402,78 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.3, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -28.928226, y: -307.797}
+  m_AnchoredPosition: {x: -28.928242, y: -307.797}
   m_SizeDelta: {x: -40.517517, y: -99.35196}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1820311557
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1820311558}
+  - component: {fileID: 1820311559}
+  m_Layer: 5
+  m_Name: EffectScaleChest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1820311558
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1820311557}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1380633126}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 216, y: -170}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1820311559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1820311557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e871ab7f06be22409c0100a35bf01a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_name: 
+  m_mode: 0
+  m_type: 6
+  m_control_object: {fileID: 1133842650}
+  m_max_time: 1
+  m_current_time: 0
+  m_delay_value: 0
+  m_is_state_normalize: 0
+  m_is_root_reset_permission: 0
+  m_is_child_node_reset_sign: 1
+  m_is_switch_off: 0
+  m_start_scale: {x: 0.2, y: 0.2}
+  m_finish_scale: {x: 1, y: 1}
+  m_start_pos: {x: 0, y: 0}
+  m_finish_pos: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
+  m_current_pos: {x: 0, y: 0}
+  m_obj_finish_pos: {fileID: 0}
+  m_new_sprite: {fileID: 0}
+  m_arc_settings:
+    m_arc_shift: {x: 0, y: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
+    m_last_progress: 0
+  m_tween_algorithm_type: 0
 --- !u!1 &1827129778
 GameObject:
   m_ObjectHideFlags: 0
@@ -8960,14 +9030,14 @@ RectTransform:
   m_GameObject: {fileID: 2025845982}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.999909, y: 0.999909, z: 0.999909}
+  m_LocalScale: {x: 0.9999091, y: 0.9999091, z: 0.9999091}
   m_Children: []
   m_Father: {fileID: 192127694}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -148.636, y: -0.20301819}
+  m_AnchoredPosition: {x: -148.636, y: -0.20301437}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2025845984
