@@ -4,19 +4,11 @@ using UnityEngine;
 
 public class scriptTrailSystem : MonoBehaviour {
 
-    [SerializeField] private bool m_is_switch_on = false;
+    [SerializeField] private effectsManager m_effect_manager = null;
     private Dictionary<int, LineRenderer> m_trails = new Dictionary<int, LineRenderer>();
     private int m_counter = 0;
 
     [SerializeField] LineRenderer m_prefab = null;
-
-    public bool Is_switch_on
-    {
-        get
-        {
-            return m_is_switch_on;
-        }
-    }
 
     // Use this for initialization
     void Start () {
@@ -40,7 +32,7 @@ public class scriptTrailSystem : MonoBehaviour {
 
     public int addTrail()
     {
-        if (Is_switch_on)
+        if (m_effect_manager.Is_trail_system_switch_on)
         {
             ++m_counter;
 
@@ -58,7 +50,7 @@ public class scriptTrailSystem : MonoBehaviour {
 
     public void AddPointToTrail(int _id, Vector3 _pos)
     {
-        if (Is_switch_on)
+        if (m_effect_manager.Is_trail_system_switch_on)
         {
             if (m_trails.ContainsKey(_id))
             {

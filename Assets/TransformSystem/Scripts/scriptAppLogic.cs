@@ -26,15 +26,12 @@ public class scriptAppLogic : MonoBehaviour {
     [SerializeField] private Canvas m_canvas_main = null;
     [SerializeField] private Canvas m_canvas_chest = null;
     private int m_current_group_id = -1;
-    [SerializeField] private scriptTrailSystem m_trail_system = null;
-
 
     void Start ()
     {
         m_effects_storage = m_effect_manager.GetComponent<effectsStorage>();
+        openCanvas(m_canvas_main);
         selectGroup(1);
-
-        Utilities.setTrailSystem(m_trail_system);
         
         //test
         /*int id = m_trail_system.addTrail();
@@ -170,7 +167,7 @@ public class scriptAppLogic : MonoBehaviour {
 
     public void clickClosePanel()
     {
-        m_trail_system.ClearSystem();
+        m_effect_manager.clearTrailSystem();
 
         switch (m_current_group_id)
         {
@@ -230,6 +227,8 @@ public class scriptAppLogic : MonoBehaviour {
 
     public void getChestContent()
     {
+        m_effect_manager.clearTrailSystem();
+
         openCanvas(m_canvas_main);
         selectGroup(5);
 

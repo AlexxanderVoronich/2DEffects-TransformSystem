@@ -5,9 +5,25 @@ using UnityEngine.UI;
 
 public class effectsManager : MonoBehaviour
 {
+    [SerializeField] private scriptTrailSystem m_trail_system = null;
+    [SerializeField] private bool m_is_trail_system_switch_on = false;
+
     private effectsStorage m_effects_storage = null;
     private Dictionary<string, cRunEffect> m_effects = null;
-    
+
+    public bool Is_trail_system_switch_on
+    {
+        get
+        {
+            return m_is_trail_system_switch_on;
+        }
+
+        set
+        {
+            m_is_trail_system_switch_on = value;
+        }
+    }
+
     public static cRunEffect generateEffectFrom(effectConfig _root_config)
     {
         _root_config.Is_ready_for_remove = false;
@@ -87,7 +103,8 @@ public class effectsManager : MonoBehaviour
             return;
         }
 
-        if (_root_config.m_type == eEffectType.TERMINAL_MOVE_LINE_LOCAL_POS)
+        if (_root_config.m_type == eEffectType.TERMINAL_MOVE_LINE_LOCAL_POS ||
+            _root_config.m_type == eEffectType.TERMINAL_MOVE_ARC_LOCAL_POS)
         {
             if (_root_config.m_is_child_node_reset_sign)
             {
@@ -95,7 +112,8 @@ public class effectsManager : MonoBehaviour
                 _root_config.m_control_object.SetActive(_root_config.Is_visible_state);
             }
         }
-        else if (_root_config.m_type == eEffectType.TERMINAL_MOVE_LINE_GLOBAL_POS)
+        else if (_root_config.m_type == eEffectType.TERMINAL_MOVE_LINE_GLOBAL_POS ||
+            _root_config.m_type == eEffectType.TERMINAL_MOVE_ARC_GLOBAL_POS)
         {
             if (_root_config.m_is_child_node_reset_sign)
             {
@@ -148,6 +166,9 @@ public class effectsManager : MonoBehaviour
     {
         init();
         m_effects_storage = GetComponent<effectsStorage>();
+
+        Utilities.setTrailSystem(m_trail_system);
+
     }
 
     void FixedUpdate()
@@ -242,5 +263,12 @@ public class effectsManager : MonoBehaviour
         }
         return true;
     }
+
+    public void clearTrailSystem()
+    {
+        if(m_trail_system != null)
+            m_trail_system.ClearSystem();
+    }
+
 }
 

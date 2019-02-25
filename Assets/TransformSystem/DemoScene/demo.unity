@@ -299,14 +299,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &51068461
@@ -626,7 +625,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &124291563
 RectTransform:
   m_ObjectHideFlags: 0
@@ -902,7 +901,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: 
   m_mode: 0
-  m_type: 7
+  m_type: 9
   m_control_object: {fileID: 1830101457}
   m_max_time: 0
   m_current_time: 0
@@ -915,14 +914,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 21300006, guid: 46f9090675ef3c14b938e25637d8cf6d, type: 3}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &140039780
@@ -987,7 +985,7 @@ MonoBehaviour:
   m_control_object: {fileID: 0}
   m_max_time: 0
   m_current_time: 0
-  m_delay_value: 0
+  m_delay_value: 6
   m_is_state_normalize: 0
   m_is_root_reset_permission: 1
   m_is_child_node_reset_sign: 0
@@ -996,14 +994,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!114 &140039784
@@ -1025,9 +1022,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: fdf6dd62b642df64d9f5d8d0c928ea56, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 465f4ac89fea0f74c9c62d0cfacef788, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1067,8 +1064,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 120.00001, y: -48}
-  m_SizeDelta: {x: 240.00002, y: 96}
+  m_AnchoredPosition: {x: 110.00001, y: -48}
+  m_SizeDelta: {x: 220.00002, y: 96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &145157976
 MonoBehaviour:
@@ -1290,14 +1287,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &192127693
@@ -1419,7 +1415,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: 
   m_mode: 0
-  m_type: 7
+  m_type: 9
   m_control_object: {fileID: 1830101457}
   m_max_time: 0
   m_current_time: 0
@@ -1432,154 +1428,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 21300004, guid: 46f9090675ef3c14b938e25637d8cf6d, type: 3}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
-    m_last_progress: 0
-  m_tween_algorithm_type: 0
---- !u!1 &226300420
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 226300421}
-  - component: {fileID: 226300422}
-  m_Layer: 5
-  m_Name: EffectMove
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &226300421
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 226300420}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 991587074}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &226300422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 226300420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e871ab7f06be22409c0100a35bf01a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_name: ExampleEffectMove
-  m_mode: 0
-  m_type: 2
-  m_control_object: {fileID: 0}
-  m_max_time: 1
-  m_current_time: 0
-  m_delay_value: 0
-  m_is_state_normalize: 0
-  m_is_root_reset_permission: 0
-  m_is_child_node_reset_sign: 0
-  m_is_switch_off: 0
-  m_start_scale: {x: 0, y: 0}
-  m_finish_scale: {x: 0, y: 0}
-  m_start_pos: {x: 0, y: 0}
-  m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
-  m_current_pos: {x: 0, y: 0}
-  m_obj_finish_pos: {fileID: 1407774301}
-  m_new_sprite: {fileID: 0}
-  m_last_progress: 0
-  m_arc_settings:
-    m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
-    m_last_progress: 0
-  m_tween_algorithm_type: 0
---- !u!1 &244740139
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 244740140}
-  - component: {fileID: 244740141}
-  m_Layer: 5
-  m_Name: EffectScale
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &244740140
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 244740139}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 305949635}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &244740141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 244740139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e871ab7f06be22409c0100a35bf01a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_name: ExampleEffectScale
-  m_mode: 0
-  m_type: 4
-  m_control_object: {fileID: 0}
-  m_max_time: 1
-  m_current_time: 0
-  m_delay_value: 0
-  m_is_state_normalize: 0
-  m_is_root_reset_permission: 0
-  m_is_child_node_reset_sign: 0
-  m_is_switch_off: 0
-  m_start_scale: {x: 0, y: 0}
-  m_finish_scale: {x: 0, y: 0}
-  m_start_pos: {x: 0, y: 0}
-  m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
-  m_current_pos: {x: 0, y: 0}
-  m_obj_finish_pos: {fileID: 0}
-  m_new_sprite: {fileID: 0}
-  m_last_progress: 0
-  m_arc_settings:
-    m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &251797476
@@ -1610,6 +1465,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 876d44ad21f470d4ca7d113fcf6d664a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_trail_system: {fileID: 2077420986}
+  m_is_trail_system_switch_on: 0
 --- !u!4 &251797478
 Transform:
   m_ObjectHideFlags: 0
@@ -1619,7 +1476,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.391162, y: -1.1147926, z: -0.0771271}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2077420987}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1692,7 +1550,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: 
   m_mode: 0
-  m_type: 6
+  m_type: 8
   m_control_object: {fileID: 685821435}
   m_max_time: 0
   m_current_time: 0
@@ -1705,14 +1563,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &266685528
@@ -1775,7 +1632,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &290730106
 GameObject:
@@ -1832,14 +1689,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 1384883134}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 200}
-    m_parameters: {x: -0.5, y: 0.5, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 3
 --- !u!1 &296547341
@@ -1911,114 +1767,6 @@ RectTransform:
   m_AnchoredPosition: {x: 2, y: -310}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &305949634
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 305949635}
-  - component: {fileID: 305949638}
-  - component: {fileID: 305949637}
-  - component: {fileID: 305949636}
-  m_Layer: 5
-  m_Name: EffectCompound3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &305949635
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 305949634}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.99982387, y: 0.99982387, z: 0.99982387}
-  m_Children:
-  - {fileID: 437841315}
-  - {fileID: 244740140}
-  m_Father: {fileID: 1185608579}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.23749171, y: 0.27442476}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &305949636
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 305949634}
-  m_CullTransparentMesh: 0
---- !u!114 &305949637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 305949634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e871ab7f06be22409c0100a35bf01a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_name: ExampleEffectCompound3
-  m_mode: 1
-  m_type: 0
-  m_control_object: {fileID: 0}
-  m_max_time: 0
-  m_current_time: 0
-  m_delay_value: 0
-  m_is_state_normalize: 0
-  m_is_root_reset_permission: 0
-  m_is_child_node_reset_sign: 0
-  m_is_switch_off: 0
-  m_start_scale: {x: 0, y: 0}
-  m_finish_scale: {x: 0, y: 0}
-  m_start_pos: {x: 0, y: 0}
-  m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
-  m_current_pos: {x: 0, y: 0}
-  m_obj_finish_pos: {fileID: 0}
-  m_new_sprite: {fileID: 0}
-  m_last_progress: 0
-  m_arc_settings:
-    m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
-    m_last_progress: 0
-  m_tween_algorithm_type: 0
---- !u!114 &305949638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 305949634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: fdf6dd62b642df64d9f5d8d0c928ea56, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
 --- !u!1 &309350524
 GameObject:
   m_ObjectHideFlags: 0
@@ -2049,8 +1797,8 @@ RectTransform:
   m_Father: {fileID: 1729359224}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.66}
-  m_AnchorMax: {x: 0.23, y: 0.92}
+  m_AnchorMin: {x: 0.023750002, y: 0.587}
+  m_AnchorMax: {x: 0.22500001, y: 0.92}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2137,7 +1885,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &345455053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2331,7 +2079,7 @@ MonoBehaviour:
   m_control_object: {fileID: 0}
   m_max_time: 0
   m_current_time: 0
-  m_delay_value: 0
+  m_delay_value: 2
   m_is_state_normalize: 0
   m_is_root_reset_permission: 1
   m_is_child_node_reset_sign: 0
@@ -2340,14 +2088,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!114 &382275904
@@ -2369,7 +2116,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: fdf6dd62b642df64d9f5d8d0c928ea56, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 465f4ac89fea0f74c9c62d0cfacef788, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -2434,14 +2181,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &389267492
@@ -2491,7 +2237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: 
   m_mode: 0
-  m_type: 5
+  m_type: 7
   m_control_object: {fileID: 1676257303}
   m_max_time: 0
   m_current_time: 0
@@ -2504,14 +2250,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &401440118
@@ -2561,7 +2306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: 
   m_mode: 0
-  m_type: 4
+  m_type: 6
   m_control_object: {fileID: 1830101457}
   m_max_time: 0.5
   m_current_time: 0
@@ -2574,14 +2319,13 @@ MonoBehaviour:
   m_finish_scale: {x: 1, y: 1}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &432240775
@@ -2641,84 +2385,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
-    m_last_progress: 0
-  m_tween_algorithm_type: 0
---- !u!1 &437841314
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 437841315}
-  - component: {fileID: 437841316}
-  m_Layer: 5
-  m_Name: EffectMove
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &437841315
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 437841314}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 305949635}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &437841316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 437841314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e871ab7f06be22409c0100a35bf01a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_name: ExampleEffectMove
-  m_mode: 0
-  m_type: 2
-  m_control_object: {fileID: 0}
-  m_max_time: 1
-  m_current_time: 0
-  m_delay_value: 0
-  m_is_state_normalize: 0
-  m_is_root_reset_permission: 0
-  m_is_child_node_reset_sign: 0
-  m_is_switch_off: 0
-  m_start_scale: {x: 0, y: 0}
-  m_finish_scale: {x: 0, y: 0}
-  m_start_pos: {x: 0, y: 0}
-  m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
-  m_current_pos: {x: 0, y: 0}
-  m_obj_finish_pos: {fileID: 1136464152}
-  m_new_sprite: {fileID: 0}
-  m_last_progress: 0
-  m_arc_settings:
-    m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &439765778
@@ -3007,14 +2680,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &507442739
@@ -3079,14 +2751,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &512836776
@@ -3152,14 +2823,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &540681769
@@ -3173,7 +2843,7 @@ GameObject:
   - component: {fileID: 540681772}
   - component: {fileID: 540681773}
   m_Layer: 5
-  m_Name: Image_slot_3
+  m_Name: EffectMoveSlot3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3187,7 +2857,7 @@ RectTransform:
   m_GameObject: {fileID: 540681769}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.999909, y: 0.999909, z: 0.999909}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1144660168}
   m_RootOrder: 2
@@ -3217,7 +2887,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: 
   m_mode: 0
-  m_type: 3
+  m_type: 5
   m_control_object: {fileID: 296547341}
   m_max_time: 1
   m_current_time: 0
@@ -3230,14 +2900,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 887393596}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
-    m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_arc_shift: {x: -1, y: 0.5}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &549838583
@@ -3274,8 +2943,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 120.00001, y: -144}
-  m_SizeDelta: {x: 240.00002, y: 96}
+  m_AnchoredPosition: {x: 110.00001, y: -144}
+  m_SizeDelta: {x: 220.00002, y: 96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &549838585
 MonoBehaviour:
@@ -3423,14 +3092,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 89144840}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &578739892
@@ -3617,8 +3285,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 120.00001, y: -240}
-  m_SizeDelta: {x: 240.00002, y: 96}
+  m_AnchoredPosition: {x: 110.00001, y: -240}
+  m_SizeDelta: {x: 220.00002, y: 96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &645880302
 MonoBehaviour:
@@ -3706,114 +3374,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 645880300}
   m_CullTransparentMesh: 0
---- !u!1 &653342263
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 653342264}
-  - component: {fileID: 653342267}
-  - component: {fileID: 653342266}
-  - component: {fileID: 653342265}
-  m_Layer: 5
-  m_Name: EffectCompound2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &653342264
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 653342263}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.99982387, y: 0.99982387, z: 0.99982387}
-  m_Children:
-  - {fileID: 2069475588}
-  - {fileID: 1190368991}
-  m_Father: {fileID: 1185608579}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.27442476}
-  m_AnchorMax: {x: 0.23749171, y: 0.66578764}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &653342265
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 653342263}
-  m_CullTransparentMesh: 0
---- !u!114 &653342266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 653342263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e871ab7f06be22409c0100a35bf01a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_name: ExampleEffectCompound2
-  m_mode: 1
-  m_type: 0
-  m_control_object: {fileID: 0}
-  m_max_time: 0
-  m_current_time: 0
-  m_delay_value: 0
-  m_is_state_normalize: 0
-  m_is_root_reset_permission: 0
-  m_is_child_node_reset_sign: 0
-  m_is_switch_off: 0
-  m_start_scale: {x: 0, y: 0}
-  m_finish_scale: {x: 0, y: 0}
-  m_start_pos: {x: 0, y: 0}
-  m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
-  m_current_pos: {x: 0, y: 0}
-  m_obj_finish_pos: {fileID: 0}
-  m_new_sprite: {fileID: 0}
-  m_last_progress: 0
-  m_arc_settings:
-    m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
-    m_last_progress: 0
-  m_tween_algorithm_type: 0
---- !u!114 &653342267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 653342263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: fdf6dd62b642df64d9f5d8d0c928ea56, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 1
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
 --- !u!1 &673693054
 GameObject:
   m_ObjectHideFlags: 0
@@ -3876,14 +3436,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &685138982
@@ -3941,14 +3500,13 @@ MonoBehaviour:
   m_finish_scale: {x: 1.3, y: 1.3}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &685821435
@@ -4062,7 +3620,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: ExampleEffectMove
   m_mode: 0
-  m_type: 2
+  m_type: 4
   m_control_object: {fileID: 309350524}
   m_max_time: 3
   m_current_time: 0
@@ -4075,14 +3633,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 931358425}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 100, y: 100}
-    m_parameters: {x: -0.5, y: 0.5, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 3
 --- !u!1 &718725820
@@ -4255,7 +3812,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: 
   m_mode: 0
-  m_type: 5
+  m_type: 7
   m_control_object: {fileID: 192127693}
   m_max_time: 0
   m_current_time: 0
@@ -4268,14 +3825,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &774456222
@@ -4470,17 +4026,16 @@ MonoBehaviour:
   m_is_child_node_reset_sign: 1
   m_is_switch_off: 0
   m_start_scale: {x: 1, y: 1}
-  m_finish_scale: {x: 1.3, y: 1.3}
+  m_finish_scale: {x: 0.3, y: 0.3}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &833575602
@@ -4544,13 +4099,21 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Effects Group 4 - hud
+  m_Text: 'Effects Group 4 - rolling huds
+
+
+    upper version is bad practice (becouse there are two image controls and arrive/hide
+    effects in it)
+
+    bottom version is good practice (change_sprite effect is used)
+
+'
 --- !u!222 &833575605
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4622,49 +4185,15 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
---- !u!1 &861086241
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 861086242}
-  m_Layer: 5
-  m_Name: finish_pos_marker_2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &861086242
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 861086241}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.99982387, y: 0.99982387, z: 0.99982387}
-  m_Children: []
-  m_Father: {fileID: 1185608579}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &873845544
 GameObject:
   m_ObjectHideFlags: 0
@@ -4725,14 +4254,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 1091295759}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 1
 --- !u!1 &874638036
@@ -4782,7 +4310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: 
   m_mode: 0
-  m_type: 4
+  m_type: 6
   m_control_object: {fileID: 685821435}
   m_max_time: 0.5
   m_current_time: 0
@@ -4795,14 +4323,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 1}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &887393596
@@ -4921,7 +4448,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: 
   m_mode: 0
-  m_type: 4
+  m_type: 6
   m_control_object: {fileID: 1830101457}
   m_max_time: 0.5
   m_current_time: 0
@@ -4934,14 +4461,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 1}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &898706097
@@ -5007,14 +4533,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &916538001
@@ -5078,14 +4603,17 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Effects Group 2 - one compound effects that contains three pair of move
-    and scale sub-effects without restore settings after execution
+  m_Text: 'Effects Group 2 - specific movements
+
+
+    One compound effects that contains three pair of move and scale sub-effects without
+    restore settings after execution'
 --- !u!222 &916538004
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5173,7 +4701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: 
   m_mode: 0
-  m_type: 4
+  m_type: 6
   m_control_object: {fileID: 1830101457}
   m_max_time: 0.5
   m_current_time: 0
@@ -5186,124 +4714,15 @@ MonoBehaviour:
   m_finish_scale: {x: 1, y: 1}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
---- !u!1 &991587073
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 991587074}
-  - component: {fileID: 991587077}
-  - component: {fileID: 991587076}
-  - component: {fileID: 991587075}
-  m_Layer: 5
-  m_Name: EffectCompound1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &991587074
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 991587073}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 226300421}
-  - {fileID: 1466055505}
-  m_Father: {fileID: 1185608579}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.66578764}
-  m_AnchorMax: {x: 0.23749171, y: 0.9288496}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &991587075
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 991587073}
-  m_CullTransparentMesh: 0
---- !u!114 &991587076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 991587073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e871ab7f06be22409c0100a35bf01a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_name: ExampleEffectCompound1
-  m_mode: 1
-  m_type: 0
-  m_control_object: {fileID: 0}
-  m_max_time: 0
-  m_current_time: 0
-  m_delay_value: 0
-  m_is_state_normalize: 0
-  m_is_root_reset_permission: 0
-  m_is_child_node_reset_sign: 0
-  m_is_switch_off: 0
-  m_start_scale: {x: 0, y: 0}
-  m_finish_scale: {x: 0, y: 0}
-  m_start_pos: {x: 0, y: 0}
-  m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
-  m_current_pos: {x: 0, y: 0}
-  m_obj_finish_pos: {fileID: 0}
-  m_new_sprite: {fileID: 0}
-  m_last_progress: 0
-  m_arc_settings:
-    m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
-    m_last_progress: 0
-  m_tween_algorithm_type: 0
---- !u!114 &991587077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 991587073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: fdf6dd62b642df64d9f5d8d0c928ea56, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 1
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
 --- !u!1 &995560058
 GameObject:
   m_ObjectHideFlags: 0
@@ -5426,7 +4845,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: ExampleEffectScale
   m_mode: 0
-  m_type: 2
+  m_type: 6
   m_control_object: {fileID: 382275900}
   m_max_time: 2
   m_current_time: 0
@@ -5439,14 +4858,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0.7, y: 0.7}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &1006648859
@@ -5520,14 +4938,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!114 &1006648863
@@ -5549,7 +4966,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: fdf6dd62b642df64d9f5d8d0c928ea56, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 465f4ac89fea0f74c9c62d0cfacef788, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -5604,7 +5021,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: 
   m_mode: 0
-  m_type: 7
+  m_type: 9
   m_control_object: {fileID: 1830101457}
   m_max_time: 0
   m_current_time: 0
@@ -5617,14 +5034,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 21300004, guid: 46f9090675ef3c14b938e25637d8cf6d, type: 3}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &1015754800
@@ -5674,7 +5090,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: 
   m_mode: 0
-  m_type: 6
+  m_type: 8
   m_control_object: {fileID: 1676257303}
   m_max_time: 0
   m_current_time: 0
@@ -5687,14 +5103,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &1019970293
@@ -5942,7 +5357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: 
   m_mode: 0
-  m_type: 4
+  m_type: 6
   m_control_object: {fileID: 1676257303}
   m_max_time: 0.5
   m_current_time: 0
@@ -5955,14 +5370,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 1}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &1086639930
@@ -6012,7 +5426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: 
   m_mode: 0
-  m_type: 5
+  m_type: 7
   m_control_object: {fileID: 1676257303}
   m_max_time: 0
   m_current_time: 0
@@ -6025,14 +5439,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &1091295759
@@ -6215,39 +5628,6 @@ RectTransform:
   m_AnchoredPosition: {x: -216, y: 170}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1136464152
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1136464153}
-  m_Layer: 5
-  m_Name: finish_pos_marker_3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1136464153
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1136464152}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1185608579}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1144660167
 GameObject:
   m_ObjectHideFlags: 0
@@ -6312,14 +5692,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &1171073541
@@ -6441,7 +5820,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: ExampleEffectMove3
   m_mode: 0
-  m_type: 2
+  m_type: 4
   m_control_object: {fileID: 1346743962}
   m_max_time: 3
   m_current_time: 0
@@ -6454,14 +5833,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 343257819}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
-    m_arc_shift: {x: 100, y: 100}
-    m_parameters: {x: -0.5, y: 0.5, z: 0}
+    m_arc_shift: {x: 300, y: -300}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 3
 --- !u!1 &1185608576
@@ -6527,12 +5905,6 @@ RectTransform:
   m_Children:
   - {fileID: 2038348963}
   - {fileID: 124291563}
-  - {fileID: 991587074}
-  - {fileID: 653342264}
-  - {fileID: 305949635}
-  - {fileID: 1407774302}
-  - {fileID: 861086242}
-  - {fileID: 1136464153}
   m_Father: {fileID: 1532822669}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6541,76 +5913,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1190368990
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1190368991}
-  - component: {fileID: 1190368992}
-  m_Layer: 5
-  m_Name: EffectScale
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1190368991
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1190368990}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 653342264}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1190368992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1190368990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e871ab7f06be22409c0100a35bf01a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_name: ExampleEffectScale
-  m_mode: 0
-  m_type: 4
-  m_control_object: {fileID: 0}
-  m_max_time: 1
-  m_current_time: 0
-  m_delay_value: 0
-  m_is_state_normalize: 0
-  m_is_root_reset_permission: 0
-  m_is_child_node_reset_sign: 0
-  m_is_switch_off: 0
-  m_start_scale: {x: 0, y: 0}
-  m_finish_scale: {x: 0, y: 0}
-  m_start_pos: {x: 0, y: 0}
-  m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
-  m_current_pos: {x: 0, y: 0}
-  m_obj_finish_pos: {fileID: 0}
-  m_new_sprite: {fileID: 0}
-  m_last_progress: 0
-  m_arc_settings:
-    m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
-    m_last_progress: 0
-  m_tween_algorithm_type: 0
 --- !u!1 &1216320384
 GameObject:
   m_ObjectHideFlags: 0
@@ -6685,7 +5987,6 @@ MonoBehaviour:
   m_group_5: {fileID: 824460700}
   m_canvas_main: {fileID: 1532822668}
   m_canvas_chest: {fileID: 2134060665}
-  m_trail_system: {fileID: 2077420986}
 --- !u!4 &1224077400
 Transform:
   m_ObjectHideFlags: 0
@@ -6835,7 +6136,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Effects Group 5
+  m_Text: 'Effects Group 5 - chest
+
+
+    Example of chest content appearance'
 --- !u!222 &1285212192
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6904,14 +6208,17 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Effects Group 1 - three compound effects that contains move and scale sub-effects
-    with restore settings after execution
+  m_Text: 'Effects Group 1 - useal movements and scale
+
+
+    Three compound effects that contains move and scale sub-effects with restore settings
+    after execution'
 --- !u!222 &1315514482
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6999,7 +6306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: ExampleEffectScale
   m_mode: 0
-  m_type: 4
+  m_type: 6
   m_control_object: {fileID: 140039780}
   m_max_time: 5
   m_current_time: 0
@@ -7012,14 +6319,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0.3, y: 0.3}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 2
 --- !u!1 &1346743962
@@ -7052,8 +6358,8 @@ RectTransform:
   m_Father: {fileID: 1729359224}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.23749171, y: 0.27442476}
+  m_AnchorMin: {x: 0.05375, y: 0.052}
+  m_AnchorMax: {x: 0.1725, y: 0.24316669}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7085,7 +6391,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 0c9ec27646d492d468fccf5767090590, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -7125,8 +6431,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 120.00001, y: -432}
-  m_SizeDelta: {x: 240.00002, y: 96}
+  m_AnchoredPosition: {x: 110.00001, y: -432}
+  m_SizeDelta: {x: 220.00002, y: 96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1372745651
 MonoBehaviour:
@@ -7261,7 +6567,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: 
   m_mode: 0
-  m_type: 6
+  m_type: 8
   m_control_object: {fileID: 685821435}
   m_max_time: 0
   m_current_time: 0
@@ -7274,14 +6580,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &1380633125
@@ -7346,14 +6651,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &1384883134
@@ -7436,7 +6740,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: 
   m_mode: 0
-  m_type: 4
+  m_type: 6
   m_control_object: {fileID: 1830101457}
   m_max_time: 0.5
   m_current_time: 0
@@ -7449,14 +6753,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 1}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &1402993472
@@ -7506,7 +6809,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: 
   m_mode: 0
-  m_type: 6
+  m_type: 8
   m_control_object: {fileID: 1676257303}
   m_max_time: 0
   m_current_time: 0
@@ -7519,49 +6822,15 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
---- !u!1 &1407774301
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1407774302}
-  m_Layer: 5
-  m_Name: finish_pos_marker_1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1407774302
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1407774301}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.99982387, y: 0.99982387, z: 0.99982387}
-  m_Children: []
-  m_Father: {fileID: 1185608579}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1422556186
 GameObject:
   m_ObjectHideFlags: 0
@@ -7648,7 +6917,7 @@ GameObject:
   - component: {fileID: 1435235544}
   - component: {fileID: 1435235545}
   m_Layer: 5
-  m_Name: Image_slot_1
+  m_Name: EffectMoveSlot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7692,7 +6961,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: 
   m_mode: 0
-  m_type: 3
+  m_type: 5
   m_control_object: {fileID: 1779680329}
   m_max_time: 1
   m_current_time: 0
@@ -7705,84 +6974,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 2025845982}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
-    m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
-    m_last_progress: 0
-  m_tween_algorithm_type: 0
---- !u!1 &1466055504
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1466055505}
-  - component: {fileID: 1466055506}
-  m_Layer: 5
-  m_Name: EffectScale
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1466055505
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1466055504}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 991587074}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1466055506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1466055504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e871ab7f06be22409c0100a35bf01a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_name: ExampleEffectScale
-  m_mode: 0
-  m_type: 4
-  m_control_object: {fileID: 0}
-  m_max_time: 1
-  m_current_time: 0
-  m_delay_value: 0
-  m_is_state_normalize: 0
-  m_is_root_reset_permission: 0
-  m_is_child_node_reset_sign: 0
-  m_is_switch_off: 0
-  m_start_scale: {x: 0, y: 0}
-  m_finish_scale: {x: 0, y: 0}
-  m_start_pos: {x: 0, y: 0}
-  m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
-  m_current_pos: {x: 0, y: 0}
-  m_obj_finish_pos: {fileID: 0}
-  m_new_sprite: {fileID: 0}
-  m_last_progress: 0
-  m_arc_settings:
-    m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_arc_shift: {x: -1, y: 0.5}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &1512317943
@@ -7832,7 +7030,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: 
   m_mode: 0
-  m_type: 5
+  m_type: 7
   m_control_object: {fileID: 685821435}
   m_max_time: 0
   m_current_time: 0
@@ -7845,14 +7043,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &1532822665
@@ -7948,7 +7145,7 @@ RectTransform:
   - {fileID: 449960843}
   - {fileID: 1882054591}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7966,7 +7163,7 @@ GameObject:
   - component: {fileID: 1603047420}
   - component: {fileID: 1603047421}
   m_Layer: 5
-  m_Name: Image_slot_2
+  m_Name: EffectMoveSlot2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7980,7 +7177,7 @@ RectTransform:
   m_GameObject: {fileID: 1603047417}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.999909, y: 0.999909, z: 0.999909}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1144660168}
   m_RootOrder: 1
@@ -8010,7 +7207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: 
   m_mode: 0
-  m_type: 3
+  m_type: 5
   m_control_object: {fileID: 774456222}
   m_max_time: 1
   m_current_time: 0
@@ -8023,14 +7220,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 66598865}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
-    m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_arc_shift: {x: -1, y: 0.5}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &1633546298
@@ -8097,14 +7293,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &1657061004
@@ -8154,7 +7349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: ExampleEffectScale
   m_mode: 0
-  m_type: 4
+  m_type: 6
   m_control_object: {fileID: 1006648859}
   m_max_time: 2
   m_current_time: 0
@@ -8167,14 +7362,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0.3, y: 0.3}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 2
 --- !u!1 &1658991614
@@ -8224,7 +7418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: 
   m_mode: 0
-  m_type: 4
+  m_type: 6
   m_control_object: {fileID: 1676257303}
   m_max_time: 0.5
   m_current_time: 0
@@ -8237,14 +7431,13 @@ MonoBehaviour:
   m_finish_scale: {x: 1, y: 1}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &1662222189
@@ -8257,7 +7450,7 @@ GameObject:
   - component: {fileID: 1662222190}
   - component: {fileID: 1662222191}
   m_Layer: 5
-  m_Name: Button_arrive
+  m_Name: Button_arrive_effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8294,7 +7487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: 
   m_mode: 0
-  m_type: 5
+  m_type: 7
   m_control_object: {fileID: 51068461}
   m_max_time: 0
   m_current_time: 0
@@ -8307,14 +7500,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &1676257303
@@ -8521,14 +7713,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 1344447644}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &1692854988
@@ -8820,7 +8011,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1729359222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8916,8 +8107,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 120.00001, y: -336}
-  m_SizeDelta: {x: 240.00002, y: 96}
+  m_AnchoredPosition: {x: 110.00001, y: -336}
+  m_SizeDelta: {x: 220.00002, y: 96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1737875308
 MonoBehaviour:
@@ -9132,17 +8323,16 @@ MonoBehaviour:
   m_is_child_node_reset_sign: 1
   m_is_switch_off: 0
   m_start_scale: {x: 1, y: 1}
-  m_finish_scale: {x: 0.5, y: 0.5}
+  m_finish_scale: {x: 1.5, y: 1.5}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &1779680329
@@ -9277,14 +8467,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &1830101457
@@ -9426,14 +8615,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &1882054590
@@ -9473,7 +8661,7 @@ RectTransform:
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.3, y: 0}
-  m_AnchorMax: {x: 0.6, y: 1}
+  m_AnchorMax: {x: 0.57500005, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -9596,14 +8784,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &2007485615
@@ -9670,14 +8857,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &2021520451
@@ -9740,14 +8926,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 1216320384}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &2025845982
@@ -9941,7 +9126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: 
   m_mode: 0
-  m_type: 7
+  m_type: 9
   m_control_object: {fileID: 1830101457}
   m_max_time: 0
   m_current_time: 0
@@ -9954,14 +9139,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 21300006, guid: 46f9090675ef3c14b938e25637d8cf6d, type: 3}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &2060707366
@@ -10011,7 +9195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: 
   m_mode: 0
-  m_type: 4
+  m_type: 6
   m_control_object: {fileID: 685821435}
   m_max_time: 0.5
   m_current_time: 0
@@ -10024,84 +9208,13 @@ MonoBehaviour:
   m_finish_scale: {x: 1, y: 1}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
-    m_last_progress: 0
-  m_tween_algorithm_type: 0
---- !u!1 &2069475587
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2069475588}
-  - component: {fileID: 2069475589}
-  m_Layer: 5
-  m_Name: EffectMove
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2069475588
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2069475587}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 653342264}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2069475589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2069475587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e871ab7f06be22409c0100a35bf01a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_name: ExampleEffectMove
-  m_mode: 0
-  m_type: 2
-  m_control_object: {fileID: 0}
-  m_max_time: 1
-  m_current_time: 0
-  m_delay_value: 0
-  m_is_state_normalize: 0
-  m_is_root_reset_permission: 0
-  m_is_child_node_reset_sign: 0
-  m_is_switch_off: 0
-  m_start_scale: {x: 0, y: 0}
-  m_finish_scale: {x: 0, y: 0}
-  m_start_pos: {x: 0, y: 0}
-  m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
-  m_current_pos: {x: 0, y: 0}
-  m_obj_finish_pos: {fileID: 861086241}
-  m_new_sprite: {fileID: 0}
-  m_last_progress: 0
-  m_arc_settings:
-    m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &2077420985
@@ -10131,7 +9244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b952b78a2b3a52d4ea5d41de2c53d16d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_is_switch_on: 1
+  m_effect_manager: {fileID: 251797477}
   m_prefab: {fileID: 120578493213562214, guid: a470d1c4321081c458931f7b38905269, type: 2}
 --- !u!4 &2077420987
 Transform:
@@ -10139,12 +9252,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2077420985}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.19305725, y: -0.07191908, z: 73.74219}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.5842193, y: 1.0428735, z: 73.81931}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 251797478}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2113639149
 GameObject:
@@ -10193,7 +9306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: 
   m_mode: 0
-  m_type: 5
+  m_type: 7
   m_control_object: {fileID: 685821435}
   m_max_time: 0
   m_current_time: 0
@@ -10206,14 +9319,13 @@ MonoBehaviour:
   m_finish_scale: {x: 0, y: 0}
   m_start_pos: {x: 0, y: 0}
   m_finish_pos: {x: 0, y: 0}
-  m_current_size: {x: 0, y: 0}
+  m_current_scale: {x: 0, y: 0}
   m_current_pos: {x: 0, y: 0}
   m_obj_finish_pos: {fileID: 0}
   m_new_sprite: {fileID: 0}
-  m_last_progress: 0
   m_arc_settings:
     m_arc_shift: {x: 0, y: 0}
-    m_parameters: {x: 0, y: 0, z: 0}
+    m_parabala_params: {x: -0.4, y: 0.4, z: 0}
     m_last_progress: 0
   m_tween_algorithm_type: 0
 --- !u!1 &2134060662
@@ -10277,7 +9389,7 @@ Canvas:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2134060662}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 1171073543}
@@ -10303,7 +9415,7 @@ RectTransform:
   m_Children:
   - {fileID: 1019970294}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

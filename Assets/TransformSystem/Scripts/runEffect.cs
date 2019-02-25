@@ -27,9 +27,9 @@ namespace Assets.EffectsScripts
             if(_config.m_tween_algorithm_type == tweenAlgorithmFactory.eTweensAlgorithms.ParabolaWithParameters)
             {
                 m_internal_tween_algorithm = (_1) => { return tweenAlgorithmFactory.parabolaWithParameters(_1, 
-                    m_config.m_arc_settings.m_parameters.x,
-                    m_config.m_arc_settings.m_parameters.y,
-                    m_config.m_arc_settings.m_parameters.z); };
+                    m_config.m_arc_settings.m_parabala_params.x,
+                    m_config.m_arc_settings.m_parabala_params.y,
+                    m_config.m_arc_settings.m_parabala_params.z); };
             }
             else
             { 
@@ -154,7 +154,7 @@ namespace Assets.EffectsScripts
 
                     case eEffectType.TERMINAL_SCALE:
                         {
-                            m_config.m_control_object.transform.localScale = m_config.m_current_size;
+                            m_config.m_control_object.transform.localScale = m_config.m_current_scale;
                             break;
                         }
 
@@ -269,7 +269,7 @@ namespace Assets.EffectsScripts
                 _config.m_current_time = _config.m_max_time;
                 _config.Is_end = true;
 
-                _config.m_current_size = _config.m_finish_scale;
+                _config.m_current_scale = _config.m_finish_scale;
                 _config.m_current_pos = _config.m_finish_pos;
             }
             else
@@ -278,8 +278,8 @@ namespace Assets.EffectsScripts
                 float percents = delta_time / _config.m_max_time;
 
                 var main_move = (_config.m_finish_pos - _config.m_start_pos);
-                double diff_progress = percents - _config.m_last_progress;
-                _config.m_last_progress = percents;
+                double diff_progress = percents - _config.Last_progress;
+                _config.Last_progress = percents;
 
                 if (m_internal_tween_algorithm != null)
                 {
@@ -327,8 +327,8 @@ namespace Assets.EffectsScripts
                 double percents = delta_time / _config.m_max_time;
 
                 var main_move = (_config.m_finish_pos - _config.m_start_pos);
-                double diff_progress_1 = percents - _config.m_last_progress;
-                _config.m_last_progress = percents;
+                double diff_progress_1 = percents - _config.Last_progress;
+                _config.Last_progress = percents;
 
                 if (m_internal_tween_algorithm != null)
                 {
@@ -374,7 +374,7 @@ namespace Assets.EffectsScripts
                 _config.m_current_time = _config.m_max_time;
                 _config.Is_end = true;
 
-                _config.m_current_size = _config.m_finish_scale;
+                _config.m_current_scale = _config.m_finish_scale;
             }
             else
             {
@@ -387,7 +387,7 @@ namespace Assets.EffectsScripts
                 }
 
                 Vector2 delta_size = (_config.m_finish_scale - _config.m_start_scale) * percents;
-                _config.m_current_size = _config.m_start_scale + delta_size;
+                _config.m_current_scale = _config.m_start_scale + delta_size;
             }
             return true;
         }
