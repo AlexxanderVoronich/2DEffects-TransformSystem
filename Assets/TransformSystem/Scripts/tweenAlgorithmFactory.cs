@@ -10,7 +10,8 @@ namespace Assets.EffectsScripts
         {
             Linear,
             Elastic,
-            InvertedParabola
+            InvertedParabola,
+            ParabolaWithParameters
         }
 
 
@@ -31,6 +32,11 @@ namespace Assets.EffectsScripts
                 case eTweensAlgorithms.InvertedParabola:
                     {
                         return invertedParabola;
+                        break;
+                    }
+                case eTweensAlgorithms.ParabolaWithParameters:
+                    {
+                        return null;
                         break;
                     }
                 default:
@@ -58,6 +64,11 @@ namespace Assets.EffectsScripts
                 return (-4) * (inpart - 0.5f) * (inpart - 0.5f) + 1;
             }
             return 1.0f;
+        }
+
+        public static double parabolaWithParameters(double inpart, float _a, float _b, float _c)
+        {
+            return _a * inpart * inpart + _b * inpart + _c;
         }
     }
 }

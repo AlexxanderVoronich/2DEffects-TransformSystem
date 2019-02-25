@@ -11,8 +11,10 @@ namespace Assets.EffectsScripts
     public enum eEffectType {
         COMPOUND_TYPE,
         TERMINAL_TYPE1,
-        TERMINAL_LOCAL_POS,
-        TERMINAL_GLOBAL_POS,
+        TERMINAL_MOVE_LINE_LOCAL_POS,
+        TERMINAL_MOVE_LINE_GLOBAL_POS,
+        TERMINAL_MOVE_ARC_LOCAL_POS,
+        TERMINAL_MOVE_ARC_GLOBAL_POS,
         TERMINAL_SCALE,
         TERMINAL_ARRIVE,
         TERMINAL_HIDE,
@@ -55,6 +57,17 @@ public class effectConfig : MonoBehaviour
     public GameObject m_obj_finish_pos = null;
     public Sprite m_new_sprite = null;
     private Sprite m_old_sprite = null;
+
+    public double m_last_progress = 0.0f;
+
+    [System.Serializable]
+    public class ArcSettings
+    {
+        [SerializeField] public Vector2 m_arc_shift;
+        [SerializeField] public Vector3 m_parameters = Vector3.zero;
+        [SerializeField] public double m_last_progress = 0.0f;
+    }
+    [SerializeField] public ArcSettings m_arc_settings;
 
     public delegate void EffectFinalAction(effectConfig _config);
     public event EffectFinalAction m_final_action = null;
@@ -140,6 +153,10 @@ public class effectConfig : MonoBehaviour
     }
 
     public event InternalTweenAlgorithm m_tween_algorithm = null;
+
+    void Start()
+    {
+    }
 
     public void clearConfig()
     {

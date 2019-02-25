@@ -26,15 +26,34 @@ public class scriptAppLogic : MonoBehaviour {
     [SerializeField] private Canvas m_canvas_main = null;
     [SerializeField] private Canvas m_canvas_chest = null;
     private int m_current_group_id = -1;
+    [SerializeField] private scriptTrailSystem m_trail_system = null;
 
 
     void Start ()
     {
         m_effects_storage = m_effect_manager.GetComponent<effectsStorage>();
         selectGroup(1);
+
+        Utilities.setTrailSystem(m_trail_system);
+        
+        //test
+        /*int id = m_trail_system.addTrail();
+        if (id != 0)
+        {
+            m_trail_system.AddPointToTrail(id, new Vector3(100, 100, 0));
+            m_trail_system.AddPointToTrail(id, new Vector3(200, 200, 0));
+            m_trail_system.AddPointToTrail(id, new Vector3(300, 300, 0));
+        }
+        id = m_trail_system.addTrail();
+        if (id != 0)
+        {
+            m_trail_system.AddPointToTrail(id, new Vector3(100, -100, 0));
+            m_trail_system.AddPointToTrail(id, new Vector3(200, -200, 0));
+            m_trail_system.AddPointToTrail(id, new Vector3(300, -300, 0));
+        }*/
     }
-	
-	void Update ()
+
+    void Update ()
     {
 	}
 
@@ -151,6 +170,8 @@ public class scriptAppLogic : MonoBehaviour {
 
     public void clickClosePanel()
     {
+        m_trail_system.ClearSystem();
+
         switch (m_current_group_id)
         {
             case 1:

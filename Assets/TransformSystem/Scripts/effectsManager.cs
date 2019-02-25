@@ -22,7 +22,8 @@ public class effectsManager : MonoBehaviour
             _root_config.Is_visible_state = _root_config.m_control_object.activeSelf;
         }
 
-        if (_root_config.m_type == eEffectType.TERMINAL_LOCAL_POS)
+        if (_root_config.m_type == eEffectType.TERMINAL_MOVE_LINE_LOCAL_POS ||
+            _root_config.m_type == eEffectType.TERMINAL_MOVE_ARC_LOCAL_POS)
         {
 
             if (_root_config.m_obj_finish_pos != null)
@@ -33,7 +34,8 @@ public class effectsManager : MonoBehaviour
 
             _root_config.m_start_pos = _root_config.m_control_object.transform.localPosition;
         }
-        else if (_root_config.m_type == eEffectType.TERMINAL_GLOBAL_POS)
+        else if (_root_config.m_type == eEffectType.TERMINAL_MOVE_LINE_GLOBAL_POS ||
+            _root_config.m_type == eEffectType.TERMINAL_MOVE_ARC_GLOBAL_POS)
         {
 
             if (_root_config.m_obj_finish_pos != null)
@@ -85,7 +87,7 @@ public class effectsManager : MonoBehaviour
             return;
         }
 
-        if (_root_config.m_type == eEffectType.TERMINAL_LOCAL_POS)
+        if (_root_config.m_type == eEffectType.TERMINAL_MOVE_LINE_LOCAL_POS)
         {
             if (_root_config.m_is_child_node_reset_sign)
             {
@@ -93,7 +95,7 @@ public class effectsManager : MonoBehaviour
                 _root_config.m_control_object.SetActive(_root_config.Is_visible_state);
             }
         }
-        else if (_root_config.m_type == eEffectType.TERMINAL_GLOBAL_POS)
+        else if (_root_config.m_type == eEffectType.TERMINAL_MOVE_LINE_GLOBAL_POS)
         {
             if (_root_config.m_is_child_node_reset_sign)
             {

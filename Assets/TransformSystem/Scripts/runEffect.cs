@@ -16,13 +16,25 @@ namespace Assets.EffectsScripts
         private event EffectBehaviour m_behaviour = null;
         private List<cRunEffect> m_parts = null;
         private InternalTweenAlgorithm m_internal_tween_algorithm = null;
+        private scriptTrailSystem m_trail_system = null;
+        private int m_trail_id= 0;
 
         public cRunEffect(effectConfig _config)
         {
             m_config = _config;
             m_parts = new List<cRunEffect>();
 
-            m_internal_tween_algorithm = tweenAlgorithmFactory.getAlgorithm(_config.m_tween_algorithm_type);
+            if(_config.m_tween_algorithm_type == tweenAlgorithmFactory.eTweensAlgorithms.ParabolaWithParameters)
+            {
+                m_internal_tween_algorithm = (_1) => { return tweenAlgorithmFactory.parabolaWithParameters(_1, 
+                    m_config.m_arc_settings.m_parameters.x,
+                    m_config.m_arc_settings.m_parameters.y,
+                    m_config.m_arc_settings.m_parameters.z); };
+            }
+            else
+            { 
+                m_internal_tween_algorithm = tweenAlgorithmFactory.getAlgorithm(_config.m_tween_algorithm_type);
+            }
         }
 
         public void update()
@@ -110,15 +122,33 @@ namespace Assets.EffectsScripts
                         {
                             break;
                         }
-                    case eEffectType.TERMINAL_LOCAL_POS:
+                    case eEffectType.TERMINAL_MOVE_LINE_LOCAL_POS:
+                    case eEffectType.TERMINAL_MOVE_ARC_LOCAL_POS:
                         {
                             m_config.m_control_object.transform.localPosition = m_config.m_current_pos;
+
+                            //var point_on_screen = Camera.main.WorldToScreenPoint(m_config.m_control_object.transform.position);
+                            var point_on_screen = m_config.m_control_object.transform.position;
+                            point_on_screen.z = 0;
+                            if (m_trail_system != null)
+                            {
+                                m_trail_system.AddPointToTrail(m_trail_id, point_on_screen);
+                            }
                             break;
                         }
 
-                    case eEffectType.TERMINAL_GLOBAL_POS:
+                    case eEffectType.TERMINAL_MOVE_LINE_GLOBAL_POS:
+                    case eEffectType.TERMINAL_MOVE_ARC_GLOBAL_POS:
                         {
                             m_config.m_control_object.transform.position = m_config.m_current_pos;
+
+                            //var point_on_screen = Camera.main.WorldToScreenPoint(m_config.m_control_object.transform.position);
+                            var point_on_screen = m_config.m_control_object.transform.position;
+                            point_on_screen.z = 0;
+                            if (m_trail_system != null)
+                            {
+                                m_trail_system.AddPointToTrail(m_trail_id, point_on_screen);
+                            }
                             break;
                         }
 
@@ -160,15 +190,21 @@ namespace Assets.EffectsScripts
                 effect.m_config.m_mode = eEffectMode.TERMINAL_MODE;
                 effect.m_behaviour = effect.behaviour_type1;
             }
-            else if (_config.m_type == eEffectType.TERMINAL_LOCAL_POS)
+            else if (_config.m_type == eEffectType.TERMINAL_MOVE_LINE_GLOBAL_POS ||
+                _config.m_type == eEffectType.TERMINAL_MOVE_LINE_LOCAL_POS)
             {
                 effect.m_config.m_mode = eEffectMode.TERMINAL_MODE;
-                effect.m_behaviour = effect.behaviour_move_local_pos;
+                effect.m_behaviour = effect.behaviour_move_along_line;
+                effect.m_trail_system = Utilities.getTrailSystem();
+                effect.m_trail_id = effect.m_trail_system.addTrail();
             }
-            else if (_config.m_type == eEffectType.TERMINAL_GLOBAL_POS)
+            else if (_config.m_type == eEffectType.TERMINAL_MOVE_ARC_GLOBAL_POS ||
+                _config.m_type == eEffectType.TERMINAL_MOVE_ARC_LOCAL_POS)
             {
                 effect.m_config.m_mode = eEffectMode.TERMINAL_MODE;
-                effect.m_behaviour = effect.behaviour_move_global_pos;
+                effect.m_behaviour = effect.behaviour_move_along_arc;
+                effect.m_trail_system = Utilities.getTrailSystem();
+                effect.m_trail_id = effect.m_trail_system.addTrail();
             }
             else if (_config.m_type == eEffectType.TERMINAL_SCALE)
             {
@@ -206,7 +242,7 @@ namespace Assets.EffectsScripts
             return false;
         }
 
-        public bool behaviour_move_local_pos(effectConfig _config)
+        public bool behaviour_move_along_line(effectConfig _config)
         {
             var dt = Time.deltaTime;
 
@@ -225,6 +261,7 @@ namespace Assets.EffectsScripts
             {
                 _config.Is_begin = false;
                 _config.m_control_object.SetActive(true);
+                _config.m_current_pos = _config.m_start_pos;
             }
 
             if (_config.m_current_time >= _config.m_max_time)
@@ -240,21 +277,22 @@ namespace Assets.EffectsScripts
                 float delta_time = _config.m_current_time;
                 float percents = delta_time / _config.m_max_time;
 
+                var main_move = (_config.m_finish_pos - _config.m_start_pos);
+                double diff_progress = percents - _config.m_last_progress;
+                _config.m_last_progress = percents;
+
                 if (m_internal_tween_algorithm != null)
                 {
                     percents = (float)m_internal_tween_algorithm(percents);
                 }
 
-                Vector2 delta_pos = (_config.m_finish_pos - _config.m_start_pos) * percents;
-                _config.m_current_pos = _config.m_start_pos + delta_pos;
-
-                Vector2 delta_size = (_config.m_finish_scale - _config.m_start_scale) * percents;
-                _config.m_current_size = _config.m_start_scale + delta_size;
+                Vector2 delta_pos = main_move * (float)diff_progress;
+                _config.m_current_pos += delta_pos;
             }
             return true;
         }
 
-        public bool behaviour_move_global_pos(effectConfig _config)
+        public bool behaviour_move_along_arc(effectConfig _config)
         {
             var dt = Time.deltaTime;
 
@@ -273,6 +311,7 @@ namespace Assets.EffectsScripts
             {
                 _config.Is_begin = false;
                 _config.m_control_object.SetActive(true);
+                _config.m_current_pos = _config.m_start_pos;
             }
 
             if (_config.m_current_time >= _config.m_max_time)
@@ -285,15 +324,26 @@ namespace Assets.EffectsScripts
             else
             {
                 float delta_time = _config.m_current_time;
-                float percents = delta_time / _config.m_max_time;
+                double percents = delta_time / _config.m_max_time;
+
+                var main_move = (_config.m_finish_pos - _config.m_start_pos);
+                double diff_progress_1 = percents - _config.m_last_progress;
+                _config.m_last_progress = percents;
 
                 if (m_internal_tween_algorithm != null)
                 {
-                    percents = (float)m_internal_tween_algorithm(percents);
+                    percents = m_internal_tween_algorithm(percents);
                 }
 
-                Vector2 delta_pos = (_config.m_finish_pos - _config.m_start_pos) * percents;
-                _config.m_current_pos = _config.m_start_pos + delta_pos;
+                Vector2 delta_pos = main_move * (float)diff_progress_1;
+                _config.m_current_pos += delta_pos;
+
+
+                percents = Math.Sin(percents * Math.PI);
+
+                double diff_progress2 = percents - _config.m_arc_settings.m_last_progress;
+                _config.m_arc_settings.m_last_progress = percents;
+                _config.m_current_pos = _config.m_current_pos + _config.m_arc_settings.m_arc_shift * (float)diff_progress2;
             }
             return true;
         }
