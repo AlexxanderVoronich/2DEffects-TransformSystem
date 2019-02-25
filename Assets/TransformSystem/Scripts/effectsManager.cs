@@ -111,7 +111,17 @@ public class effectsManager : MonoBehaviour
             return;
         }
 
-        if (_root_config.m_type == eEffectType.TERMINAL_MOVE_LINE_LOCAL_POS ||
+        if (_root_config.m_type == eEffectType.TERMINAL_ROTATE)
+        {
+            if (_root_config.m_is_child_node_reset_sign)
+            {
+                var temp = _root_config.m_control_object.transform.eulerAngles;
+                temp.z = _root_config.m_start_rotate_z;
+                _root_config.m_control_object.transform.eulerAngles = temp;
+                _root_config.m_control_object.SetActive(_root_config.Is_visible_state);
+            }
+        }
+        else if (_root_config.m_type == eEffectType.TERMINAL_MOVE_LINE_LOCAL_POS ||
             _root_config.m_type == eEffectType.TERMINAL_MOVE_ARC_LOCAL_POS)
         {
             if (_root_config.m_is_child_node_reset_sign)

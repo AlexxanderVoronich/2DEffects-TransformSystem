@@ -10,7 +10,7 @@ namespace Assets.EffectsScripts
 
     public enum eEffectType {
         COMPOUND_TYPE,
-        TERMINAL_TYPE1,
+        TERMINAL_ROTATE,
         TERMINAL_MOVE_LINE_LOCAL_POS,
         TERMINAL_MOVE_LINE_GLOBAL_POS,
         TERMINAL_MOVE_ARC_LOCAL_POS,
@@ -46,12 +46,16 @@ public class effectConfig : MonoBehaviour
     public bool m_is_child_node_reset_sign = false;
     public bool m_is_switch_off = false;
 
+    public float m_start_rotate_z;
+    public float m_finish_rotate_z;
+
     public Vector2 m_start_scale;
     public Vector2 m_finish_scale;
 
     public Vector2 m_start_pos;
     public Vector2 m_finish_pos;
 
+    public float m_current_rotate_z;
     public Vector2 m_current_scale;
     public Vector2 m_current_pos;
 
