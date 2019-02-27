@@ -239,6 +239,7 @@ public class effectConfig : MonoBehaviour
         m_last_progress = 0.0f;
         Current_pos = m_start_pos;
         Current_scale = m_start_scale;
+        Current_rotate_z = m_start_rotate_z;
         m_arc_settings.m_last_progress = 0.0f;
     }
 

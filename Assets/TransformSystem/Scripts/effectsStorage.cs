@@ -34,4 +34,16 @@ public class effectsStorage : MonoBehaviour {
         }
         return null;
     }
+
+    public effectConfig getEffectByIndex(int _id)
+    {
+        int index = -1;
+        foreach (var it in m_storage.Values)
+        {
+            index++;
+            if (index == _id)
+                return it;
+        }
+        return null;
+    }
 }

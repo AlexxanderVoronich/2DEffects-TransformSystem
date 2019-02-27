@@ -7,11 +7,14 @@ public class effectsManager : MonoBehaviour
 {
     [SerializeField] private scriptTrailSystem m_trail_system = null;
     [SerializeField] private bool m_is_trail_system_switch_on = false;
+    [SerializeField] private int m_test_effect_index = 0;
 
     private effectsStorage m_effects_storage = null;
     private Dictionary<string, cRunEffect> m_effects = null;
     private Dictionary<string, cRunEffect> m_effects_for_replace = null;
     private Dictionary<string, effectConfig> m_effects_for_break = null;
+
+
 
     public bool Is_trail_system_switch_on
     {
@@ -152,12 +155,16 @@ public class effectsManager : MonoBehaviour
         else if (_root_config.m_type == eEffectType.TERMINAL_ARRIVE)
         {
             if (_root_config.m_is_child_node_reset_sign)
+            {
                 _root_config.m_control_object.SetActive(false);
+            }
         }
         else if (_root_config.m_type == eEffectType.TERMINAL_HIDE)
         {
             if (_root_config.m_is_child_node_reset_sign)
+            {
                 _root_config.m_control_object.SetActive(true);
+            }
         }
         else if (_root_config.m_type == eEffectType.TERMINAL_CHANGE_SPRITE)
         {
@@ -178,11 +185,13 @@ public class effectsManager : MonoBehaviour
                 var img = _root_config.m_control_object.GetComponent<Image>();
                 if (img != null)
                 {
+                    img.fillAmount = 0;
                 }
                 _root_config.m_control_object.SetActive(_root_config.Is_visible_state);
             }
         }
 
+        _root_config.clearConfig();
 
         foreach (Transform child in _root_config.gameObject.transform)
         {
@@ -239,6 +248,7 @@ public class effectsManager : MonoBehaviour
             {
                 removeEffect(ef.Key);
                 ef.Value.invokeLast();
+                resetConfig(ef.Value);
             }
             m_effects_for_break.Clear();
         }
@@ -374,6 +384,36 @@ public class effectsManager : MonoBehaviour
     {
         if(m_trail_system != null)
             m_trail_system.ClearSystem();
+    }
+
+    public void runTest()
+    {
+        var effect_config = m_effects_storage.getEffectByIndex(m_test_effect_index);
+
+        if (effect_config == null)
+        {
+            return;
+        }
+
+        startEffectForName(effect_config.m_name, null);
+    }
+
+    public void runClearTest()
+    {
+        clearTrailSystem();
+
+        var effect_config = m_effects_storage.getEffectByIndex(m_test_effect_index);
+
+        if (effect_config == null)
+        {
+            return;
+        }
+
+        if (effect_config.m_name != "")
+        {
+            breakEffectForName(effect_config.m_name);
+            //resetConfig(effect_config);
+        }
     }
 }
 
