@@ -14,6 +14,7 @@ public class scriptAppLogic : MonoBehaviour {
     [SerializeField] private Button m_button_start_2= null;
     [SerializeField] private Button m_button_start_3= null;
     [SerializeField] private Button m_button_start_4= null;
+    [SerializeField] private Button m_button_start_4_2= null;
 
     [SerializeField] private GameObject m_panel_select = null;
 
@@ -140,6 +141,25 @@ public class scriptAppLogic : MonoBehaviour {
 
                     m_panel_select.SetActive(false);
                     m_button_start_4.gameObject.SetActive(false);
+                    m_button_start_4_2.gameObject.SetActive(false);
+
+                    break;
+                }
+            case 44: //start effects from case_4 in loop mode
+                {
+                    m_effect_manager.startEffectForName("ExampleEffectCompound_g4", effectFinalAction, true);
+                    m_effect_manager.startEffectForName("ExampleEffectCompound_g4_v2", effectFinalAction, true);
+
+                    m_panel_select.SetActive(false);
+                    m_button_start_4.gameObject.SetActive(false);
+                    m_button_start_4_2.gameObject.SetActive(false);
+                    break;
+                }
+            case 45: //break effects
+                {
+                    m_effect_manager.breakEffectForName("ExampleEffectCompound_g4");
+                    m_effect_manager.breakEffectForName("ExampleEffectCompound_g4_v2");
+
                     break;
                 }
             case 5:
@@ -199,6 +219,8 @@ public class scriptAppLogic : MonoBehaviour {
                 {
                     m_final_panel.SetActive(false);
                     m_button_start_4.gameObject.SetActive(true);
+                    m_button_start_4_2.gameObject.SetActive(true);
+
                     m_panel_select.SetActive(true);
 
                     var effect_config = m_effects_storage.getEffect("ExampleEffectCompound_g4");

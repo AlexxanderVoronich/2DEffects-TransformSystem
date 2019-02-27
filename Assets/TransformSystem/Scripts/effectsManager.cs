@@ -10,6 +10,8 @@ public class effectsManager : MonoBehaviour
 
     private effectsStorage m_effects_storage = null;
     private Dictionary<string, cRunEffect> m_effects = null;
+    private Dictionary<string, cRunEffect> m_effects_for_replace = null;
+    private Dictionary<string, effectConfig> m_effects_for_break = null;
 
     public bool Is_trail_system_switch_on
     {
@@ -24,7 +26,7 @@ public class effectsManager : MonoBehaviour
         }
     }
 
-    public static cRunEffect generateEffectFrom(effectConfig _root_config)
+    public cRunEffect generateEffectFrom(effectConfig _root_config)
     {
         _root_config.Is_ready_for_remove = false;
         _root_config.Delay = _root_config.m_delay_value;
@@ -85,7 +87,7 @@ public class effectsManager : MonoBehaviour
         cRunEffect root_effect = null;
         if (!_root_config.m_is_switch_off)
         {
-            root_effect = cRunEffect.create(_root_config);
+            root_effect = cRunEffect.create(_root_config, this);
 
             foreach (Transform child in _root_config.gameObject.transform)
             {
@@ -203,6 +205,15 @@ public class effectsManager : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(m_effects_for_replace.Count > 0)
+        {
+            foreach(var ef in m_effects_for_replace)
+            {
+                m_effects[ef.Key] = ef.Value;
+            }
+            m_effects_for_replace.Clear();
+        }
+
         foreach (var ef in m_effects)
         {
             ef.Value.update();
@@ -221,6 +232,16 @@ public class effectsManager : MonoBehaviour
                 return;
             }
         }
+
+        if (m_effects_for_break.Count > 0)
+        {
+            foreach (var ef in m_effects_for_break)
+            {
+                removeEffect(ef.Key);
+                ef.Value.invokeLast();
+            }
+            m_effects_for_break.Clear();
+        }
     }
 
     void Update()
@@ -231,10 +252,12 @@ public class effectsManager : MonoBehaviour
     public void init()
     {
         m_effects = new Dictionary<string, cRunEffect>();
+        m_effects_for_replace = new Dictionary<string, cRunEffect>();
+        m_effects_for_break = new Dictionary<string, effectConfig>();
     }
 
 
-    public void startEffectForName(string _effect_name, effectConfig.EffectFinalAction _action)
+    public void startEffectForName(string _effect_name, effectConfig.EffectFinalAction _action, bool _loop_mode = false)
     {
         var effect_config = m_effects_storage.getEffect(_effect_name);
 
@@ -246,7 +269,9 @@ public class effectsManager : MonoBehaviour
 
         if (!isEffectRun(_effect_name))
         {
-            cRunEffect root_effect = effectsManager.generateEffectFrom(effect_config);
+            effect_config.m_is_loop = _loop_mode;
+            cRunEffect root_effect = generateEffectFrom(effect_config);
+            effect_config.Is_main_effect = true;
 
             if (root_effect != null)
             {
@@ -255,6 +280,45 @@ public class effectsManager : MonoBehaviour
             }
         }
     }
+
+    public void restartLoopEffect(effectConfig _effect_config)
+    {
+        if (_effect_config == null)
+        {
+            Debug.unityLogger.Log("effectsManager", "Loop effect is null");
+            return;
+        }
+
+        if (_effect_config.Is_main_effect)
+        {
+            _effect_config.m_delay_value = _effect_config.m_delta_time_loop;
+            cRunEffect run = generateEffectFrom(_effect_config);
+
+            if (run != null)
+            {
+                //_effect_config.m_final_action += _action;
+                replaceEffect(_effect_config.m_name, run);
+            }
+        }
+        else
+        {
+            Debug.unityLogger.Log("effectsManager", "Loop effect is not main");
+        }
+    }
+
+    public void breakEffectForName(string _effect_name)
+    {
+        var effect_config = m_effects_storage.getEffect(_effect_name);
+
+        if (effect_config == null)
+        {
+            Debug.unityLogger.Log("effectsManager", "Effect was not found: " + _effect_name);
+            return;
+        }
+
+        m_effects_for_break.Add(_effect_name, effect_config);
+    }
+
 
     public bool isExistRunEffect()
     {
@@ -266,12 +330,24 @@ public class effectsManager : MonoBehaviour
         return m_effects.ContainsKey(_name);
     }
 
-    public void addEffect(string _key, cRunEffect _effect)
+    public void addEffect(string _key, cRunEffect _run)
     {
         if (!m_effects.ContainsKey(_key))
         {
-            m_effects.Add(_key, _effect);
+            m_effects.Add(_key, _run);
         }
+    }
+
+    private void replaceEffect(string _key, cRunEffect _run)
+    {
+        if(_key != "" && _run != null)
+        {
+            if (m_effects.ContainsKey(_key) && !m_effects_for_replace.ContainsKey(_key))
+            {
+                m_effects_for_replace.Add(_key, _run);
+            }
+        }
+
     }
 
     public void removeEffect(string _key)
@@ -279,7 +355,7 @@ public class effectsManager : MonoBehaviour
         m_effects.Remove(_key);
     }
 
-    public bool updateForKey(string _key)
+    /*public bool updateForKey(string _key)
     {
         if (m_effects.ContainsKey(_key))
         {
@@ -292,13 +368,12 @@ public class effectsManager : MonoBehaviour
             }
         }
         return true;
-    }
+    }*/
 
     public void clearTrailSystem()
     {
         if(m_trail_system != null)
             m_trail_system.ClearSystem();
     }
-
 }
 

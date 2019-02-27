@@ -25,6 +25,7 @@ namespace Assets.EffectsScripts
 
 public class effectConfig : MonoBehaviour
 {
+    private bool m_is_main_effect = false;
     public string m_name;
     public eEffectMode m_mode = eEffectMode.TERMINAL_MODE;
     public eEffectType m_type = eEffectType.COMPOUND_TYPE;
@@ -45,19 +46,20 @@ public class effectConfig : MonoBehaviour
     public bool m_is_root_reset_permission = false;
     public bool m_is_child_node_reset_sign = false;
     public bool m_is_switch_off = false;
+    public bool m_is_loop = false;
+    public float m_delta_time_loop = 0;
 
     public float m_start_rotate_z;
     public float m_finish_rotate_z;
+    private float m_current_rotate_z;
 
     public Vector2 m_start_scale;
     public Vector2 m_finish_scale;
+    private Vector2 m_current_scale;
 
     public Vector2 m_start_pos;
     public Vector2 m_finish_pos;
-
-    public float m_current_rotate_z;
-    public Vector2 m_current_scale;
-    public Vector2 m_current_pos;
+    private Vector2 m_current_pos;
 
     public GameObject m_obj_finish_pos = null;
     public Sprite m_new_sprite = null;
@@ -170,6 +172,58 @@ public class effectConfig : MonoBehaviour
         }
     }
 
+    public bool Is_main_effect
+    {
+        get
+        {
+            return m_is_main_effect;
+        }
+
+        set
+        {
+            m_is_main_effect = value;
+        }
+    }
+
+    public float Current_rotate_z
+    {
+        get
+        {
+            return m_current_rotate_z;
+        }
+
+        set
+        {
+            m_current_rotate_z = value;
+        }
+    }
+
+    public Vector2 Current_scale
+    {
+        get
+        {
+            return m_current_scale;
+        }
+
+        set
+        {
+            m_current_scale = value;
+        }
+    }
+
+    public Vector2 Current_pos
+    {
+        get
+        {
+            return m_current_pos;
+        }
+
+        set
+        {
+            m_current_pos = value;
+        }
+    }
+
     public event InternalTweenAlgorithm m_tween_algorithm = null;
 
     void Start()
@@ -183,8 +237,8 @@ public class effectConfig : MonoBehaviour
         m_current_time = 0;
         m_delay = m_delay_value;
         m_last_progress = 0.0f;
-        m_current_pos = m_start_pos;
-        m_current_scale = m_start_scale;
+        Current_pos = m_start_pos;
+        Current_scale = m_start_scale;
         m_arc_settings.m_last_progress = 0.0f;
     }
 
@@ -195,4 +249,5 @@ public class effectConfig : MonoBehaviour
             m_final_action.Invoke(this);
         }
     }
+
 }

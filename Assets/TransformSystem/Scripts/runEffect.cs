@@ -9,13 +9,23 @@ namespace Assets.EffectsScripts
 {
     public class cRunEffect
     {
+        private effectsManager m_effects_manager = null;
         public List<cRunEffect> getParts() { return m_parts; }
         public effectConfig getConfig() { return m_config; }
+
+        //config of effect
         private effectConfig m_config;
+
+        //callback to behavior method
         private delegate bool EffectBehaviour(effectConfig _config);
         private event EffectBehaviour m_behaviour = null;
+
+        //list of derived sun-effects
         private List<cRunEffect> m_parts = null;
+        //callback to tween method that calculate time position
         private InternalTweenAlgorithm m_internal_tween_algorithm = null;
+
+        //trail system data
         private scriptTrailSystem m_trail_system = null;
         private int m_trail_id= 0;
 
@@ -35,6 +45,11 @@ namespace Assets.EffectsScripts
             { 
                 m_internal_tween_algorithm = tweenAlgorithmFactory.getAlgorithm(_config.m_tween_algorithm_type);
             }
+        }
+
+        public void setManager(effectsManager _manager)
+        {
+            m_effects_manager = _manager;
         }
 
         public void update()
@@ -67,7 +82,15 @@ namespace Assets.EffectsScripts
 
                 if (m_parts.Count == 0)
                 {
-                    m_config.Is_end = true;
+                    //if it is main root effect with sign of loop
+                    if (m_config.m_is_loop && m_config.Is_main_effect)
+                    {
+                        m_effects_manager.restartLoopEffect(m_config);
+                    }
+                    else
+                    {
+                        m_config.Is_end = true;
+                    }
                 }
 
                 if (m_config.m_mode == eEffectMode.PARALLEL_MODE)
@@ -121,14 +144,14 @@ namespace Assets.EffectsScripts
                     case eEffectType.TERMINAL_ROTATE:
                         {
                             var temp = m_config.m_control_object.transform.eulerAngles;
-                            temp.z = m_config.m_current_rotate_z;
+                            temp.z = m_config.Current_rotate_z;
                             m_config.m_control_object.transform.eulerAngles = temp;
                             break;
                         }
                     case eEffectType.TERMINAL_MOVE_LINE_LOCAL_POS:
                     case eEffectType.TERMINAL_MOVE_ARC_LOCAL_POS:
                         {
-                            m_config.m_control_object.transform.localPosition = m_config.m_current_pos;
+                            m_config.m_control_object.transform.localPosition = m_config.Current_pos;
 
                             //var point_on_screen = Camera.main.WorldToScreenPoint(m_config.m_control_object.transform.position);
                             var point_on_screen = m_config.m_control_object.transform.position;
@@ -143,7 +166,7 @@ namespace Assets.EffectsScripts
                     case eEffectType.TERMINAL_MOVE_LINE_GLOBAL_POS:
                     case eEffectType.TERMINAL_MOVE_ARC_GLOBAL_POS:
                         {
-                            m_config.m_control_object.transform.position = m_config.m_current_pos;
+                            m_config.m_control_object.transform.position = m_config.Current_pos;
 
                             //var point_on_screen = Camera.main.WorldToScreenPoint(m_config.m_control_object.transform.position);
                             var point_on_screen = m_config.m_control_object.transform.position;
@@ -157,7 +180,7 @@ namespace Assets.EffectsScripts
 
                     case eEffectType.TERMINAL_SCALE:
                         {
-                            m_config.m_control_object.transform.localScale = m_config.m_current_scale;
+                            m_config.m_control_object.transform.localScale = m_config.Current_scale;
                             break;
                         }
 
@@ -180,11 +203,13 @@ namespace Assets.EffectsScripts
             }
         }
 
-        public static cRunEffect create(effectConfig _config)
+        public static cRunEffect create(effectConfig _config, effectsManager _manager)
         {
 
             cRunEffect effect = null;
             effect = new cRunEffect(_config);
+            effect.setManager(_manager);
+
             if (_config.m_type == eEffectType.COMPOUND_TYPE)
             {
 
@@ -279,7 +304,7 @@ namespace Assets.EffectsScripts
             {
                 _config.Is_begin = false;
                 _config.m_control_object.SetActive(true);
-                _config.m_current_pos = _config.m_start_pos;
+                _config.Current_pos = _config.m_start_pos;
             }
 
             if (_config.m_current_time >= _config.m_max_time)
@@ -287,8 +312,8 @@ namespace Assets.EffectsScripts
                 _config.m_current_time = _config.m_max_time;
                 _config.Is_end = true;
 
-                _config.m_current_scale = _config.m_finish_scale;
-                _config.m_current_pos = _config.m_finish_pos;
+                //_config.m_current_scale = _config.m_finish_scale;
+                _config.Current_pos = _config.m_finish_pos;
             }
             else
             {
@@ -305,7 +330,7 @@ namespace Assets.EffectsScripts
                 _config.Last_progress = percents;
 
                 Vector2 delta_pos = main_move * (float)diff_progress;
-                _config.m_current_pos += delta_pos;
+                _config.Current_pos += delta_pos;
             }
             return true;
         }
@@ -329,7 +354,7 @@ namespace Assets.EffectsScripts
             {
                 _config.Is_begin = false;
                 _config.m_control_object.SetActive(true);
-                _config.m_current_pos = _config.m_start_pos;
+                _config.Current_pos = _config.m_start_pos;
             }
 
             if (_config.m_current_time >= _config.m_max_time)
@@ -337,7 +362,7 @@ namespace Assets.EffectsScripts
                 _config.m_current_time = _config.m_max_time;
                 _config.Is_end = true;
 
-                _config.m_current_pos = _config.m_finish_pos;
+                _config.Current_pos = _config.m_finish_pos;
             }
             else
             {
@@ -354,14 +379,14 @@ namespace Assets.EffectsScripts
                 }
 
                 Vector2 delta_pos = main_move * (float)diff_progress_1;
-                _config.m_current_pos += delta_pos;
+                _config.Current_pos += delta_pos;
 
 
                 percents = Math.Sin(percents * Math.PI);
 
                 double diff_progress2 = percents - _config.m_arc_settings.m_last_progress;
                 _config.m_arc_settings.m_last_progress = percents;
-                _config.m_current_pos = _config.m_current_pos + _config.m_arc_settings.m_arc_shift * (float)diff_progress2;
+                _config.Current_pos = _config.Current_pos + _config.m_arc_settings.m_arc_shift * (float)diff_progress2;
             }
             return true;
         }
@@ -392,7 +417,7 @@ namespace Assets.EffectsScripts
                 _config.m_current_time = _config.m_max_time;
                 _config.Is_end = true;
 
-                _config.m_current_rotate_z = _config.m_finish_rotate_z;
+                _config.Current_rotate_z = _config.m_finish_rotate_z;
             }
             else
             {
@@ -405,7 +430,7 @@ namespace Assets.EffectsScripts
                 }
 
                 var delta_size = (_config.m_finish_rotate_z - _config.m_start_rotate_z) * percents;
-                _config.m_current_rotate_z = _config.m_start_rotate_z + delta_size;
+                _config.Current_rotate_z = _config.m_start_rotate_z + delta_size;
             }
             return true;
         }
@@ -436,7 +461,7 @@ namespace Assets.EffectsScripts
                 _config.m_current_time = _config.m_max_time;
                 _config.Is_end = true;
 
-                _config.m_current_scale = _config.m_finish_scale;
+                _config.Current_scale = _config.m_finish_scale;
             }
             else
             {
@@ -449,7 +474,7 @@ namespace Assets.EffectsScripts
                 }
 
                 Vector2 delta_size = (_config.m_finish_scale - _config.m_start_scale) * percents;
-                _config.m_current_scale = _config.m_start_scale + delta_size;
+                _config.Current_scale = _config.m_start_scale + delta_size;
             }
             return true;
         }
