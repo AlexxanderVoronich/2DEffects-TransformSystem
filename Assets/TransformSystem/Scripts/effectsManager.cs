@@ -37,7 +37,7 @@ public class effectsManager : MonoBehaviour
         {
             if(_root_config.m_control_object == null)
             {
-                Debug.unityLogger.Log("effectsManager", "Not Compound Effect must have control object: " + _root_config.m_name + "/" + _root_config.m_type.ToString());
+                Debug.unityLogger.Log("effectsManager", "Not Compound Effect must have control object: " + _root_config.m_root_name + "/" + _root_config.m_type.ToString());
                 return null;
             }
             _root_config.Is_visible_state = _root_config.m_control_object.activeSelf;
@@ -311,7 +311,7 @@ public class effectsManager : MonoBehaviour
             if (root_effect != null)
             {
                 effect_config.m_final_action += _action;
-                addEffect(effect_config.m_name, root_effect);
+                addEffect(effect_config.m_root_name, root_effect);
             }
         }
     }
@@ -332,7 +332,7 @@ public class effectsManager : MonoBehaviour
             if (run != null)
             {
                 //_effect_config.m_final_action += _action;
-                replaceEffect(_effect_config.m_name, run);
+                replaceEffect(_effect_config.m_root_name, run);
             }
         }
         else
@@ -420,7 +420,7 @@ public class effectsManager : MonoBehaviour
             return;
         }
 
-        startEffectForName(effect_config.m_name, null);
+        startEffectForName(effect_config.m_root_name, null);
     }
 
     public void runClearTest()
@@ -434,9 +434,9 @@ public class effectsManager : MonoBehaviour
             return;
         }
 
-        if (effect_config.m_name != "")
+        if (effect_config.m_root_name != "")
         {
-            breakEffectForName(effect_config.m_name);
+            breakEffectForName(effect_config.m_root_name);
             //resetConfig(effect_config);
         }
     }

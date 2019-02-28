@@ -113,31 +113,31 @@ public class scriptAppLogic : MonoBehaviour {
         {
             case 1:
                 {
-                    m_effect_manager.startEffectForName("ExampleEffectCompound1", effectFinalAction);
-                    m_effect_manager.startEffectForName("ExampleEffectCompound2", effectFinalAction);
-                    m_effect_manager.startEffectForName("ExampleEffectCompound3", effectFinalAction);
+                    m_effect_manager.startEffectForName("RootEffect_g1_1", effectFinalAction);
+                    m_effect_manager.startEffectForName("RootEffect_g1_2", effectFinalAction);
+                    m_effect_manager.startEffectForName("RootEffect_g1_3", effectFinalAction);
                     m_panel_select.SetActive(false);
                     m_button_start_1.gameObject.SetActive(false);
                     break;
                 }
             case 2:
                 {
-                    m_effect_manager.startEffectForName("ExampleEffectCompound_g2", effectFinalAction);
+                    m_effect_manager.startEffectForName("RootEffect_g2", effectFinalAction);
                     m_panel_select.SetActive(false);
                     m_button_start_2.gameObject.SetActive(false);
                     break;
                 }
             case 3:
                 {
-                    m_effect_manager.startEffectForName("ExampleEffectCompound_g3", effectFinalAction);
+                    m_effect_manager.startEffectForName("RootEffect_g3", effectFinalAction);
                     m_panel_select.SetActive(false);
-                    m_button_start_2.gameObject.SetActive(false);
+                    m_button_start_3.gameObject.SetActive(false);
                     break;
                 }
             case 4:
                 {
-                    m_effect_manager.startEffectForName("ExampleEffectCompound_g4", effectFinalAction);
-                    m_effect_manager.startEffectForName("ExampleEffectCompound_g4_v2", effectFinalAction);
+                    m_effect_manager.startEffectForName("RootEffect_g4", effectFinalAction);
+                    m_effect_manager.startEffectForName("RootEffect_g4_v2", effectFinalAction);
 
                     m_panel_select.SetActive(false);
                     m_button_start_4.gameObject.SetActive(false);
@@ -147,8 +147,8 @@ public class scriptAppLogic : MonoBehaviour {
                 }
             case 44: //start effects from case_4 in loop mode
                 {
-                    m_effect_manager.startEffectForName("ExampleEffectCompound_g4", effectFinalAction, true);
-                    m_effect_manager.startEffectForName("ExampleEffectCompound_g4_v2", effectFinalAction, true);
+                    m_effect_manager.startEffectForName("RootEffect_g4", effectFinalAction, true);
+                    m_effect_manager.startEffectForName("RootEffect_g4_v2", effectFinalAction, true);
 
                     m_panel_select.SetActive(false);
                     m_button_start_4.gameObject.SetActive(false);
@@ -157,15 +157,15 @@ public class scriptAppLogic : MonoBehaviour {
                 }
             case 45: //break effects
                 {
-                    m_effect_manager.breakEffectForName("ExampleEffectCompound_g4");
-                    m_effect_manager.breakEffectForName("ExampleEffectCompound_g4_v2");
+                    m_effect_manager.breakEffectForName("RootEffect_g4");
+                    m_effect_manager.breakEffectForName("RootEffect_g4_v2");
 
                     break;
                 }
             case 5:
                 {
                     openCanvas(m_canvas_chest);
-                    m_effect_manager.startEffectForName("EffectCompoundChest", null);          
+                    m_effect_manager.startEffectForName("RootEffectChest", null);          
                     break;
                 }
         }
@@ -204,7 +204,7 @@ public class scriptAppLogic : MonoBehaviour {
                     m_button_start_2.gameObject.SetActive(true);
                     m_panel_select.SetActive(true);
 
-                    var effect_config = m_effects_storage.getEffect("ExampleEffectCompound_g2");
+                    var effect_config = m_effects_storage.getEffect("RootEffect_g2");
                     if (effect_config != null)
                     {
                         effectsManager.resetConfig(effect_config);
@@ -217,7 +217,7 @@ public class scriptAppLogic : MonoBehaviour {
                     m_button_start_3.gameObject.SetActive(true);
                     m_panel_select.SetActive(true);
 
-                    var effect_config = m_effects_storage.getEffect("ExampleEffectCompound_g3");
+                    var effect_config = m_effects_storage.getEffect("RootEffect_g3");
                     if (effect_config != null)
                     {
                         effectsManager.resetConfig(effect_config);
@@ -232,13 +232,13 @@ public class scriptAppLogic : MonoBehaviour {
 
                     m_panel_select.SetActive(true);
 
-                    var effect_config = m_effects_storage.getEffect("ExampleEffectCompound_g4");
+                    var effect_config = m_effects_storage.getEffect("RootEffect_g4");
                     if (effect_config != null)
                     {
                         effectsManager.resetConfig(effect_config);
                     }
                     
-                    var effect_config_2 = m_effects_storage.getEffect("ExampleEffectCompound_g4_v2");
+                    var effect_config_2 = m_effects_storage.getEffect("RootEffect_g4_v2");
                     if (effect_config_2 != null)
                     {
                         effectsManager.resetConfig(effect_config_2);
@@ -263,7 +263,7 @@ public class scriptAppLogic : MonoBehaviour {
         openCanvas(m_canvas_main);
         selectGroup(5);
 
-        var effect_config = m_effects_storage.getEffect("EffectCompoundChest");
+        var effect_config = m_effects_storage.getEffect("RootEffectChest");
         effectsManager.resetConfig(effect_config);
     }
 }

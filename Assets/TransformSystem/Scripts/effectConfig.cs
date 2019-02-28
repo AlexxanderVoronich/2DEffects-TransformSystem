@@ -5,25 +5,25 @@ using Assets.EffectsScripts;
 public class effectConfig : MonoBehaviour
 {
     private bool m_is_main_effect = false;
-    public string m_name = "";
+    [Tooltip("Effect name (only for launch root effect)")]
+    public string m_root_name = "";
     public eEffectMode m_mode = eEffectMode.TERMINAL_MODE;
     public eEffectType m_type = eEffectType.COMPOUND_TYPE;
-
-    public GameObject m_control_object = null;
-    public string m_animate_begin_name_state = "";
-    public int m_animate_begin_state_value = 0;
-    public string m_animate_end_name_state = "";
-    public int m_animate_end_state_value = 0;
-
-    public float m_max_time = 0;
-    public float m_current_time = 0;
-    private float m_delay = 0;
-    public float m_delay_value = 0;
 
     private bool m_is_end = false;
     private bool m_is_begin = true;
     private bool m_is_ready_for_remove = false;
     private bool m_is_visible_state = false;
+
+    [Header("Main settings")]
+    [Tooltip("Object controlled by effect")]
+    public GameObject m_control_object = null;
+    [Tooltip("Effect max time")]
+    public float m_max_time = 0;
+    public float m_current_time = 0;
+    private float m_delay = 0;
+    [Tooltip("Effect delay time")]
+    public float m_delay_value = 0;
 
     public bool m_is_state_normalize = false;
     public bool m_is_root_reset_permission = false;
@@ -32,39 +32,51 @@ public class effectConfig : MonoBehaviour
     public bool m_is_loop = false;
     public float m_delta_time_loop = 0;
     public bool m_is_link_to_last_position = false;
+    public tweenAlgorithmFactory.eTweensAlgorithms m_tween_algorithm_type = tweenAlgorithmFactory.eTweensAlgorithms.Linear;
 
+    [Header("Move effect fields")]
+    public Vector2 m_start_pos;
+    public Vector2 m_finish_pos;
+    private Vector2 m_current_pos;
+    [System.Serializable]
+    public class ArcSettings
+    {
+        [SerializeField]
+        public Vector2 m_arc_shift;
+        [SerializeField]
+        public Vector3 m_parabala_params = new Vector3(-0.4f, 0.4f, 0.0f);
+        [SerializeField]
+        public double m_last_progress = 0.0f;
+    }
+    [SerializeField]
+    public ArcSettings m_arc_settings;
+    public GameObject m_obj_finish_pos = null;
+
+    [Header("Rotate effect fields")]
     public float m_start_rotate_z;
     public float m_finish_rotate_z;
     public float m_rotate_speed = 1.0f;
     private float m_current_rotate_z;
 
+    [Header("Scale effect fields")]
     public Vector2 m_start_scale;
     public Vector2 m_finish_scale;
     private Vector2 m_current_scale;
 
-    public Vector2 m_start_pos;
-    public Vector2 m_finish_pos;
-    private Vector2 m_current_pos;
-
-    public GameObject m_obj_finish_pos = null;
+    [Header("Change sprite effect fields")]
     public Sprite m_new_sprite = null;
     private Sprite m_old_sprite = null;
 
-    private double m_last_progress = 0.0f;
+    [Header("Animate effect fields")]
+    public string m_animate_begin_name_state = "";
+    public int m_animate_begin_state_value = 0;
+    public string m_animate_end_name_state = "";
+    public int m_animate_end_state_value = 0;
 
-    [System.Serializable]
-    public class ArcSettings
-    {
-        [SerializeField] public Vector2 m_arc_shift;
-        [SerializeField] public Vector3 m_parabala_params = new Vector3(-0.4f, 0.4f, 0.0f);
-        [SerializeField] public double m_last_progress = 0.0f;
-    }
-    [SerializeField] public ArcSettings m_arc_settings;
+    private double m_last_progress = 0.0f;
 
     public delegate void EffectFinalAction(effectConfig _config);
     public event EffectFinalAction m_final_action = null;
-
-    public tweenAlgorithmFactory.eTweensAlgorithms m_tween_algorithm_type = tweenAlgorithmFactory.eTweensAlgorithms.Linear;
 
     public float Delay
     {

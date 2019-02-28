@@ -15,7 +15,7 @@ public class effectsStorage : MonoBehaviour {
         {
             if (one != null)
             {
-                string key = one.m_name;
+                string key = one.m_root_name;
                 m_storage[key] = one;
             }
         }
