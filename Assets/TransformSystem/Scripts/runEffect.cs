@@ -670,7 +670,7 @@ namespace Assets.EffectsScripts
                 _config.m_control_object.SetActive(true);
 
                 Animator anim_control = _config.m_control_object.GetComponent<Animator>();
-                if (anim_control != null)
+                if (anim_control != null && _config.m_animate_begin_name_state != "")
                 {
                     anim_control.SetInteger(_config.m_animate_begin_name_state, _config.m_animate_begin_state_value);
                 }
@@ -682,7 +682,7 @@ namespace Assets.EffectsScripts
                 _config.Is_end = true;
 
                 Animator anim_control = _config.m_control_object.GetComponent<Animator>();
-                if (anim_control != null)
+                if (anim_control != null && _config.m_animate_end_name_state != "")
                 {
                     anim_control.SetInteger(_config.m_animate_end_name_state, _config.m_animate_end_state_value);
                 }
