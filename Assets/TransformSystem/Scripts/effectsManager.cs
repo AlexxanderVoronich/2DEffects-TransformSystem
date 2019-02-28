@@ -390,21 +390,6 @@ public class effectsManager : MonoBehaviour
         m_effects.Remove(_key);
     }
 
-    /*public bool updateForKey(string _key)
-    {
-        if (m_effects.ContainsKey(_key))
-        {
-            m_effects[_key].update();
-
-            if (m_effects[_key].getConfig().Is_end)
-            {
-                removeEffect(_key);
-                return false;
-            }
-        }
-        return true;
-    }*/
-
     public void clearTrailSystem()
     {
         if(m_trail_system != null)
@@ -431,6 +416,7 @@ public class effectsManager : MonoBehaviour
 
         if (effect_config == null)
         {
+            Debug.unityLogger.Log("effectsManager::runClearTest", "Error! Root effect was not found");
             return;
         }
 
@@ -438,6 +424,10 @@ public class effectsManager : MonoBehaviour
         {
             breakEffectForName(effect_config.m_root_name);
             //resetConfig(effect_config);
+        }
+        else
+        {
+            Debug.unityLogger.Log("effectsManager::runClearTest", "Error! Root effect without name!");
         }
     }
 }

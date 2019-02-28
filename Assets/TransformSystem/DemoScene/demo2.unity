@@ -564,6 +564,11 @@ Prefab:
       propertyPath: m_is_root_reset_permission
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114634409900302400, guid: 5c2030adc41ba6d4cbce35de15cdf141,
+        type: 2}
+      propertyPath: m_root_name
+      value: Exampl
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c2030adc41ba6d4cbce35de15cdf141, type: 2}
   m_IsPrefabAsset: 0
@@ -729,7 +734,7 @@ Prefab:
     - target: {fileID: 114058179955781810, guid: ac8cdc9c91443714fb9bf079845f5d4b,
         type: 2}
       propertyPath: m_max_time
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114058179955781810, guid: ac8cdc9c91443714fb9bf079845f5d4b,
         type: 2}
@@ -1215,12 +1220,27 @@ Prefab:
     - target: {fileID: 114058179955781810, guid: ac8cdc9c91443714fb9bf079845f5d4b,
         type: 2}
       propertyPath: m_max_time
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114058179955781810, guid: ac8cdc9c91443714fb9bf079845f5d4b,
         type: 2}
       propertyPath: m_is_child_node_reset_sign
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114058179955781810, guid: ac8cdc9c91443714fb9bf079845f5d4b,
+        type: 2}
+      propertyPath: m_type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114058179955781810, guid: ac8cdc9c91443714fb9bf079845f5d4b,
+        type: 2}
+      propertyPath: m_arc_settings.m_arc_shift.x
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114058179955781810, guid: ac8cdc9c91443714fb9bf079845f5d4b,
+        type: 2}
+      propertyPath: m_arc_settings.m_arc_shift.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac8cdc9c91443714fb9bf079845f5d4b, type: 2}
@@ -1772,7 +1792,7 @@ Prefab:
     - target: {fileID: 114058179955781810, guid: ac8cdc9c91443714fb9bf079845f5d4b,
         type: 2}
       propertyPath: m_max_time
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114058179955781810, guid: ac8cdc9c91443714fb9bf079845f5d4b,
         type: 2}
@@ -1812,7 +1832,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -508, y: -327}
+  m_AnchoredPosition: {x: -123, y: -327}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &1568609088 stripped
@@ -2016,12 +2036,27 @@ Prefab:
     - target: {fileID: 114058179955781810, guid: ac8cdc9c91443714fb9bf079845f5d4b,
         type: 2}
       propertyPath: m_max_time
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114058179955781810, guid: ac8cdc9c91443714fb9bf079845f5d4b,
         type: 2}
       propertyPath: m_is_child_node_reset_sign
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114058179955781810, guid: ac8cdc9c91443714fb9bf079845f5d4b,
+        type: 2}
+      propertyPath: m_type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114058179955781810, guid: ac8cdc9c91443714fb9bf079845f5d4b,
+        type: 2}
+      propertyPath: m_arc_settings.m_arc_shift.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114058179955781810, guid: ac8cdc9c91443714fb9bf079845f5d4b,
+        type: 2}
+      propertyPath: m_arc_settings.m_arc_shift.y
+      value: -100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac8cdc9c91443714fb9bf079845f5d4b, type: 2}
