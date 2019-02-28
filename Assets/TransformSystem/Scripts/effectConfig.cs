@@ -1,36 +1,19 @@
 ﻿using UnityEngine;
 using Assets.EffectsScripts;
 
-namespace Assets.EffectsScripts
-{
-    public enum eEffectMode {
-        TERMINAL_MODE,
-        PARALLEL_MODE,
-        DIRECT_MODE };
-
-    public enum eEffectType {
-        COMPOUND_TYPE,
-        TERMINAL_ROTATE,
-        TERMINAL_MOVE_LINE_LOCAL_POS,
-        TERMINAL_MOVE_LINE_GLOBAL_POS,
-        TERMINAL_MOVE_ARC_LOCAL_POS,
-        TERMINAL_MOVE_ARC_GLOBAL_POS,
-        TERMINAL_SCALE,
-        TERMINAL_ARRIVE,
-        TERMINAL_HIDE,
-        TERMINAL_CHANGE_SPRITE,
-        TERMINAL_FILL_RECT
-    };
-}
 
 public class effectConfig : MonoBehaviour
 {
     private bool m_is_main_effect = false;
-    public string m_name;
+    public string m_name = "";
     public eEffectMode m_mode = eEffectMode.TERMINAL_MODE;
     public eEffectType m_type = eEffectType.COMPOUND_TYPE;
 
     public GameObject m_control_object = null;
+    public string m_animate_begin_name_state = "";
+    public int m_animate_begin_state_value = 0;
+    public string m_animate_end_name_state = "";
+    public int m_animate_end_state_value = 0;
 
     public float m_max_time = 0;
     public float m_current_time = 0;
@@ -48,9 +31,11 @@ public class effectConfig : MonoBehaviour
     public bool m_is_switch_off = false;
     public bool m_is_loop = false;
     public float m_delta_time_loop = 0;
+    public bool m_is_link_to_last_position = false;
 
     public float m_start_rotate_z;
     public float m_finish_rotate_z;
+    public float m_rotate_speed = 1.0f;
     private float m_current_rotate_z;
 
     public Vector2 m_start_scale;

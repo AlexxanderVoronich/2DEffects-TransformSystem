@@ -151,7 +151,10 @@ namespace Assets.EffectsScripts
                     case eEffectType.TERMINAL_MOVE_LINE_LOCAL_POS:
                     case eEffectType.TERMINAL_MOVE_ARC_LOCAL_POS:
                         {
-                            m_config.m_control_object.transform.localPosition = m_config.Current_pos;
+                            //var temp = m_config.m_control_object.transform.localPosition;
+                            Vector3 temp = m_config.Current_pos;
+                            temp.z = m_config.m_control_object.transform.localPosition.z;
+                            m_config.m_control_object.transform.localPosition = temp;
 
                             //var point_on_screen = Camera.main.WorldToScreenPoint(m_config.m_control_object.transform.position);
                             var point_on_screen = m_config.m_control_object.transform.position;
@@ -166,7 +169,10 @@ namespace Assets.EffectsScripts
                     case eEffectType.TERMINAL_MOVE_LINE_GLOBAL_POS:
                     case eEffectType.TERMINAL_MOVE_ARC_GLOBAL_POS:
                         {
-                            m_config.m_control_object.transform.position = m_config.Current_pos;
+                            //var temp = m_config.m_control_object.transform.position;
+                            Vector3 temp = m_config.Current_pos;
+                            temp.z = m_config.m_control_object.transform.position.z;
+                            m_config.m_control_object.transform.position = temp;
 
                             //var point_on_screen = Camera.main.WorldToScreenPoint(m_config.m_control_object.transform.position);
                             var point_on_screen = m_config.m_control_object.transform.position;
@@ -188,6 +194,7 @@ namespace Assets.EffectsScripts
                     case eEffectType.TERMINAL_HIDE:
                     case eEffectType.TERMINAL_CHANGE_SPRITE:
                     case eEffectType.TERMINAL_FILL_RECT:
+                    case eEffectType.TERMINAL_ANIMATION:
                         {
                             break;
                         }
@@ -276,7 +283,19 @@ namespace Assets.EffectsScripts
                     }
                 }
             }
-
+            else if (_config.m_type == eEffectType.TERMINAL_ANIMATION)
+            {
+                effect.m_config.m_mode = eEffectMode.TERMINAL_MODE;
+                effect.m_behaviour = effect.behaviour_type_animation;
+                if (effect.m_config.m_is_state_normalize)
+                {
+                    var img = effect.m_config.m_control_object.GetComponent<Image>();
+                    if (img != null)
+                    {
+                        img.fillAmount = 0;
+                    }
+                }
+            }
             return effect;
         }
 
@@ -304,7 +323,24 @@ namespace Assets.EffectsScripts
             {
                 _config.Is_begin = false;
                 _config.m_control_object.SetActive(true);
-                _config.Current_pos = _config.m_start_pos;
+
+                if (_config.m_is_link_to_last_position)
+                {
+                    if (_config.m_type == eEffectType.TERMINAL_MOVE_LINE_LOCAL_POS)
+                    {
+                        _config.m_start_pos = _config.m_control_object.transform.localPosition;
+                        _config.Current_pos = _config.m_control_object.transform.localPosition;
+                    }
+                    else if (_config.m_type == eEffectType.TERMINAL_MOVE_LINE_GLOBAL_POS)
+                    {
+                        _config.m_start_pos = _config.m_control_object.transform.position;
+                        _config.Current_pos = _config.m_control_object.transform.position;
+                    }
+                }
+                else
+                {
+                    _config.Current_pos = _config.m_start_pos;
+                }
             }
 
             if (_config.m_current_time >= _config.m_max_time)
@@ -354,7 +390,24 @@ namespace Assets.EffectsScripts
             {
                 _config.Is_begin = false;
                 _config.m_control_object.SetActive(true);
-                _config.Current_pos = _config.m_start_pos;
+
+                if (_config.m_is_link_to_last_position)
+                {
+                    if (_config.m_type == eEffectType.TERMINAL_MOVE_ARC_LOCAL_POS)
+                    {
+                        _config.m_start_pos = _config.m_control_object.transform.localPosition;
+                        _config.Current_pos = _config.m_control_object.transform.localPosition;
+                    }
+                    else if(_config.m_type == eEffectType.TERMINAL_MOVE_ARC_GLOBAL_POS)
+                    {
+                        _config.m_start_pos = _config.m_control_object.transform.position;
+                        _config.Current_pos = _config.m_control_object.transform.position;
+                    }
+                }
+                else
+                {
+                    _config.Current_pos = _config.m_start_pos;
+                }
             }
 
             if (_config.m_current_time >= _config.m_max_time)
@@ -430,7 +483,7 @@ namespace Assets.EffectsScripts
                 }
 
                 var delta_size = (_config.m_finish_rotate_z - _config.m_start_rotate_z) * percents;
-                _config.Current_rotate_z = _config.m_start_rotate_z + delta_size;
+                _config.Current_rotate_z = _config.m_start_rotate_z + delta_size * _config.m_rotate_speed;
             }
             return true;
         }
@@ -593,6 +646,49 @@ namespace Assets.EffectsScripts
                     img.fillAmount = percents;
                 }
             }
+            return true;
+        }
+
+        public bool behaviour_type_animation(effectConfig _config)
+        {
+            var dt = Time.deltaTime;
+
+            if (_config.Delay > 0)
+            {
+                _config.Delay -= dt;
+                if (_config.Delay > 0)
+                {
+                    return false;
+                }
+            }
+
+            _config.m_current_time += dt;
+
+            if (_config.Is_begin)
+            {
+                _config.Is_begin = false;
+                _config.m_control_object.SetActive(true);
+
+                Animator anim_control = _config.m_control_object.GetComponent<Animator>();
+                if (anim_control != null)
+                {
+                    anim_control.SetInteger(_config.m_animate_begin_name_state, _config.m_animate_begin_state_value);
+                }
+            }
+
+            if (_config.m_current_time >= _config.m_max_time)
+            {
+                _config.m_current_time = _config.m_max_time;
+                _config.Is_end = true;
+
+                Animator anim_control = _config.m_control_object.GetComponent<Animator>();
+                if (anim_control != null)
+                {
+                    anim_control.SetInteger(_config.m_animate_end_name_state, _config.m_animate_end_state_value);
+                }
+            }
+
+
             return true;
         }
     }

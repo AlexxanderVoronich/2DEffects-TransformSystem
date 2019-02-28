@@ -85,7 +85,10 @@ public class effectsManager : MonoBehaviour
 
             }
         }
-
+        else if (_root_config.m_type == eEffectType.TERMINAL_ANIMATION)
+        {
+           
+        }
 
         cRunEffect root_effect = null;
         if (!_root_config.m_is_switch_off)
@@ -131,7 +134,12 @@ public class effectsManager : MonoBehaviour
         {
             if (_root_config.m_is_child_node_reset_sign)
             {
-                _root_config.m_control_object.transform.localPosition = _root_config.m_start_pos;
+                //_root_config.m_control_object.transform.localPosition = _root_config.m_start_pos;
+
+                Vector3 temp = _root_config.m_start_pos;
+                temp.z = _root_config.m_control_object.transform.localPosition.z;
+                _root_config.m_control_object.transform.localPosition = temp;
+
                 _root_config.m_control_object.SetActive(_root_config.Is_visible_state);
             }
         }
@@ -140,7 +148,12 @@ public class effectsManager : MonoBehaviour
         {
             if (_root_config.m_is_child_node_reset_sign)
             {
-                _root_config.m_control_object.transform.position = _root_config.m_start_pos;
+                //_root_config.m_control_object.transform.position = _root_config.m_start_pos;
+
+                Vector3 temp = _root_config.m_start_pos;
+                temp.z = _root_config.m_control_object.transform.position.z;
+                _root_config.m_control_object.transform.position = temp;
+
                 _root_config.m_control_object.SetActive(_root_config.Is_visible_state);
             }
         }
@@ -189,6 +202,18 @@ public class effectsManager : MonoBehaviour
                 }
                 _root_config.m_control_object.SetActive(_root_config.Is_visible_state);
             }
+        }
+        else if (_root_config.m_type == eEffectType.TERMINAL_ANIMATION)
+        {
+            /*if (_root_config.m_is_child_node_reset_sign)
+            {
+                var img = _root_config.m_control_object.GetComponent<Image>();
+                if (img != null)
+                {
+                    img.fillAmount = 0;
+                }
+                _root_config.m_control_object.SetActive(_root_config.Is_visible_state);
+            }*/
         }
 
         _root_config.clearConfig();

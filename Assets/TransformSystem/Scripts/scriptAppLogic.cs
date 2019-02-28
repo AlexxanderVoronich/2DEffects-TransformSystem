@@ -205,7 +205,10 @@ public class scriptAppLogic : MonoBehaviour {
                     m_panel_select.SetActive(true);
 
                     var effect_config = m_effects_storage.getEffect("ExampleEffectCompound_g2");
-                    effectsManager.resetConfig(effect_config);
+                    if (effect_config != null)
+                    {
+                        effectsManager.resetConfig(effect_config);
+                    }
                     break;
                 }
             case 3:
@@ -213,6 +216,12 @@ public class scriptAppLogic : MonoBehaviour {
                     m_final_panel.SetActive(false);
                     m_button_start_3.gameObject.SetActive(true);
                     m_panel_select.SetActive(true);
+
+                    var effect_config = m_effects_storage.getEffect("ExampleEffectCompound_g3");
+                    if (effect_config != null)
+                    {
+                        effectsManager.resetConfig(effect_config);
+                    }
                     break;
                 }
             case 4:
