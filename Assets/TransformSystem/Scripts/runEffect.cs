@@ -198,6 +198,17 @@ namespace Assets.EffectsScripts
                         {
                             break;
                         }
+
+                    case eEffectType.TERMINAL_CHANGE_COLOR:
+                        {
+                            var img = m_config.m_control_object.GetComponent<Image>();
+
+                            if (img != null)
+                            {
+                               img.color = m_config.Current_color;
+                            }
+                            break;
+                        }
                 }
             }
         }
@@ -295,6 +306,11 @@ namespace Assets.EffectsScripts
                         img.fillAmount = 0;
                     }
                 }
+            }
+            else if (_config.m_type == eEffectType.TERMINAL_CHANGE_COLOR)
+            {
+                effect.m_config.m_mode = eEffectMode.TERMINAL_MODE;
+                effect.m_behaviour = effect.behaviour_type_change_color;
             }
             return effect;
         }
@@ -689,6 +705,50 @@ namespace Assets.EffectsScripts
             }
 
 
+            return true;
+        }
+
+        public bool behaviour_type_change_color(effectConfig _config)
+        {
+            var dt = Time.deltaTime;
+
+            if (_config.Delay > 0)
+            {
+                _config.Delay -= dt;
+                if (_config.Delay > 0)
+                {
+                    return false;
+                }
+            }
+
+            _config.m_current_time += dt;
+
+            if (_config.Is_begin)
+            {
+                _config.Is_begin = false;
+                _config.m_control_object.SetActive(true);
+            }
+
+            if (_config.m_current_time >= _config.m_max_time)
+            {
+                _config.m_current_time = _config.m_max_time;
+                _config.Is_end = true;
+
+                _config.Current_color = _config.m_finish_color;
+            }
+            else
+            {
+                float delta_time = _config.m_current_time;
+                float percents = delta_time / _config.m_max_time;
+
+                if (m_internal_tween_algorithm != null)
+                {
+                    percents = (float)m_internal_tween_algorithm(percents);
+                }
+
+                Color delta_color = (_config.m_finish_color - _config.m_start_color) * percents;
+                _config.Current_color = _config.m_start_color + delta_color;
+            }
             return true;
         }
     }

@@ -13,8 +13,7 @@ public class effectsManager : MonoBehaviour
     private Dictionary<string, cRunEffect> m_effects = null;
     private Dictionary<string, cRunEffect> m_effects_for_replace = null;
     private Dictionary<string, effectConfig> m_effects_for_break = null;
-
-
+    private bool m_is_init = false;
 
     public bool Is_trail_system_switch_on
     {
@@ -215,6 +214,19 @@ public class effectsManager : MonoBehaviour
                 _root_config.m_control_object.SetActive(_root_config.Is_visible_state);
             }*/
         }
+        else if (_root_config.m_type == eEffectType.TERMINAL_CHANGE_COLOR)
+        {
+            if (_root_config.m_is_child_node_reset_sign)
+            {
+                var img = _root_config.m_control_object.GetComponent<Image>();
+
+                if (img != null)
+                {
+                    img.color = _root_config.m_start_color;
+                }
+                _root_config.m_control_object.SetActive(_root_config.Is_visible_state);
+            }
+        }
 
         _root_config.clearConfig();
 
@@ -231,10 +243,6 @@ public class effectsManager : MonoBehaviour
     void Start()
     {
         init();
-        m_effects_storage = GetComponent<effectsStorage>();
-
-        Utilities.setTrailSystem(m_trail_system);
-
     }
 
     void FixedUpdate()
@@ -286,14 +294,26 @@ public class effectsManager : MonoBehaviour
 
     public void init()
     {
-        m_effects = new Dictionary<string, cRunEffect>();
-        m_effects_for_replace = new Dictionary<string, cRunEffect>();
-        m_effects_for_break = new Dictionary<string, effectConfig>();
+        if (!m_is_init)
+        {
+            m_effects = new Dictionary<string, cRunEffect>();
+            m_effects_for_replace = new Dictionary<string, cRunEffect>();
+            m_effects_for_break = new Dictionary<string, effectConfig>();
+
+            m_effects_storage = GetComponent<effectsStorage>();
+            Utilities.setTrailSystem(m_trail_system);
+            m_is_init = true;
+        }
     }
 
 
     public void startEffectForName(string _effect_name, effectConfig.EffectFinalAction _action, bool _loop_mode = false)
     {
+        if (!m_is_init)
+        {
+            init();
+        }
+
         var effect_config = m_effects_storage.getEffect(_effect_name);
 
         if(effect_config == null)

@@ -15,6 +15,7 @@ public class scriptAppLogic : MonoBehaviour {
     [SerializeField] private Button m_button_start_3= null;
     [SerializeField] private Button m_button_start_4= null;
     [SerializeField] private Button m_button_start_4_2= null;
+    [SerializeField] private Button m_button_start_5= null;
 
     [SerializeField] private GameObject m_panel_select = null;
 
@@ -23,6 +24,7 @@ public class scriptAppLogic : MonoBehaviour {
     [SerializeField] private GameObject m_group_3 = null;
     [SerializeField] private GameObject m_group_4 = null;
     [SerializeField] private GameObject m_group_5 = null;
+    [SerializeField] private GameObject m_group_6 = null;
 
     [SerializeField] private Canvas m_canvas_main = null;
     [SerializeField] private Canvas m_canvas_chest = null;
@@ -104,6 +106,12 @@ public class scriptAppLogic : MonoBehaviour {
                     m_group_5.SetActive(true);
                     break;
                 }
+
+            case 6:
+                {
+                    m_group_6.SetActive(true);
+                    break;
+                }
         }
     }
 
@@ -164,8 +172,15 @@ public class scriptAppLogic : MonoBehaviour {
                 }
             case 5:
                 {
+                    m_effect_manager.startEffectForName("RootEffect_g5", effectFinalAction);
+                    m_panel_select.SetActive(false);
+                    m_button_start_5.gameObject.SetActive(false);
+                    break;
+                }
+            case 6:
+                {
                     openCanvas(m_canvas_chest);
-                    m_effect_manager.startEffectForName("RootEffectChest", null);          
+                    m_effect_manager.startEffectForName("RootEffectChest", null);
                     break;
                 }
         }
@@ -246,6 +261,19 @@ public class scriptAppLogic : MonoBehaviour {
                     break;
                 }
             case 5:
+                {
+                    m_final_panel.SetActive(false);
+                    m_button_start_5.gameObject.SetActive(true);
+                    m_panel_select.SetActive(true);
+
+                    var effect_config = m_effects_storage.getEffect("RootEffect_g5");
+                    if (effect_config != null)
+                    {
+                        effectsManager.resetConfig(effect_config);
+                    }
+                    break;
+                }
+            case 6:
                 {
 
                     break;

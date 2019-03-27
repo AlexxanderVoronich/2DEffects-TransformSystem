@@ -73,6 +73,11 @@ public class effectConfig : MonoBehaviour
     public string m_animate_end_name_state = "";
     public int m_animate_end_state_value = 0;
 
+    [Header("Color effect fields")]
+    public Color m_start_color;
+    public Color m_finish_color;
+    private Color m_current_color;
+
     private double m_last_progress = 0.0f;
 
     public delegate void EffectFinalAction(effectConfig _config);
@@ -218,6 +223,45 @@ public class effectConfig : MonoBehaviour
         set
         {
             m_current_pos = value;
+        }
+    }
+
+    public Color Current_color
+    {
+        get
+        {
+            return m_current_color;
+        }
+
+        set
+        {
+            m_current_color = value;
+        }
+    }
+
+    public Color Finish_color
+    {
+        get
+        {
+            return m_finish_color;
+        }
+
+        set
+        {
+            m_finish_color = value;
+        }
+    }
+
+    public Color Start_color
+    {
+        get
+        {
+            return m_start_color;
+        }
+
+        set
+        {
+            m_start_color = value;
         }
     }
 
