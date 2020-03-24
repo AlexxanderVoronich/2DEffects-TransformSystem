@@ -58,13 +58,13 @@ namespace Assets.EffectsScripts
             {
                 foreach (var child_effect in m_parts)
                 {
-                    if (child_effect.getConfig().Is_end)
+                    if (child_effect.getConfig().IsEnd)
                     {
                         child_effect.getConfig().clearConfig();
-                        child_effect.getConfig().Is_ready_for_remove = true;
+                        child_effect.getConfig().IsReadyForRemove = true;
                     }
                 }
-                m_parts.RemoveAll(x => x.m_config.Is_ready_for_remove);
+                m_parts.RemoveAll(x => x.m_config.IsReadyForRemove);
             }
 
             if (m_config.m_type == eEffectType.COMPOUND_TYPE)
@@ -83,13 +83,13 @@ namespace Assets.EffectsScripts
                 if (m_parts.Count == 0)
                 {
                     //if it is main root effect with sign of loop
-                    if (m_config.m_is_loop && m_config.Is_main_effect)
+                    if (m_config.m_is_loop && m_config.IsMainEffect)
                     {
                         m_effects_manager.restartLoopEffect(m_config);
                     }
                     else
                     {
-                        m_config.Is_end = true;
+                        m_config.IsEnd = true;
                     }
                 }
 
@@ -144,7 +144,7 @@ namespace Assets.EffectsScripts
                     case eEffectType.TERMINAL_ROTATE:
                         {
                             var temp = m_config.m_control_object.transform.eulerAngles;
-                            temp.z = m_config.Current_rotate_z;
+                            temp.z = m_config.CurrentRotateZ;
                             m_config.m_control_object.transform.eulerAngles = temp;
                             break;
                         }
@@ -335,9 +335,9 @@ namespace Assets.EffectsScripts
 
             _config.m_current_time += dt;
 
-            if (_config.Is_begin)
+            if (_config.IsBegin)
             {
-                _config.Is_begin = false;
+                _config.IsBegin = false;
                 _config.m_control_object.SetActive(true);
 
                 if (_config.m_is_link_to_last_position)
@@ -362,7 +362,7 @@ namespace Assets.EffectsScripts
             if (_config.m_current_time >= _config.m_max_time)
             {
                 _config.m_current_time = _config.m_max_time;
-                _config.Is_end = true;
+                _config.IsEnd = true;
 
                 //_config.m_current_scale = _config.m_finish_scale;
                 _config.Current_pos = _config.m_finish_pos;
@@ -378,8 +378,8 @@ namespace Assets.EffectsScripts
                 }
 
                 var main_move = (_config.m_finish_pos - _config.m_start_pos);
-                double diff_progress = percents - _config.Last_progress;
-                _config.Last_progress = percents;
+                double diff_progress = percents - _config.LastProgress;
+                _config.LastProgress = percents;
 
                 Vector2 delta_pos = main_move * (float)diff_progress;
                 _config.Current_pos += delta_pos;
@@ -402,9 +402,9 @@ namespace Assets.EffectsScripts
 
             _config.m_current_time += dt;
 
-            if (_config.Is_begin)
+            if (_config.IsBegin)
             {
-                _config.Is_begin = false;
+                _config.IsBegin = false;
                 _config.m_control_object.SetActive(true);
 
                 if (_config.m_is_link_to_last_position)
@@ -429,7 +429,7 @@ namespace Assets.EffectsScripts
             if (_config.m_current_time >= _config.m_max_time)
             {
                 _config.m_current_time = _config.m_max_time;
-                _config.Is_end = true;
+                _config.IsEnd = true;
 
                 _config.Current_pos = _config.m_finish_pos;
             }
@@ -439,8 +439,8 @@ namespace Assets.EffectsScripts
                 double percents = delta_time / _config.m_max_time;
 
                 var main_move = (_config.m_finish_pos - _config.m_start_pos);
-                double diff_progress_1 = percents - _config.Last_progress;
-                _config.Last_progress = percents;
+                double diff_progress_1 = percents - _config.LastProgress;
+                _config.LastProgress = percents;
 
                 if (m_internal_tween_algorithm != null)
                 {
@@ -475,18 +475,18 @@ namespace Assets.EffectsScripts
 
             _config.m_current_time += dt;
 
-            if (_config.Is_begin)
+            if (_config.IsBegin)
             {
-                _config.Is_begin = false;
+                _config.IsBegin = false;
                 _config.m_control_object.SetActive(true);
             }
 
             if (_config.m_current_time >= _config.m_max_time)
             {
                 _config.m_current_time = _config.m_max_time;
-                _config.Is_end = true;
+                _config.IsEnd = true;
 
-                _config.Current_rotate_z = _config.m_finish_rotate_z;
+                _config.CurrentRotateZ = _config.m_finish_rotate_z;
             }
             else
             {
@@ -499,7 +499,7 @@ namespace Assets.EffectsScripts
                 }
 
                 var delta_size = (_config.m_finish_rotate_z - _config.m_start_rotate_z) * percents;
-                _config.Current_rotate_z = _config.m_start_rotate_z + delta_size * _config.m_rotate_speed;
+                _config.CurrentRotateZ = _config.m_start_rotate_z + delta_size * _config.m_rotate_speed;
             }
             return true;
         }
@@ -519,16 +519,16 @@ namespace Assets.EffectsScripts
 
             _config.m_current_time += dt;
 
-            if (_config.Is_begin)
+            if (_config.IsBegin)
             {
-                _config.Is_begin = false;
+                _config.IsBegin = false;
                 _config.m_control_object.SetActive(true);
             }
 
             if (_config.m_current_time >= _config.m_max_time)
             {
                 _config.m_current_time = _config.m_max_time;
-                _config.Is_end = true;
+                _config.IsEnd = true;
 
                 _config.Current_scale = _config.m_finish_scale;
             }
@@ -563,8 +563,8 @@ namespace Assets.EffectsScripts
 
             _config.m_current_time += dt;
             _config.m_control_object.SetActive(true);
-            _config.Is_begin = false;
-            _config.Is_end = true;
+            _config.IsBegin = false;
+            _config.IsEnd = true;
             return true;
         }
 
@@ -584,8 +584,8 @@ namespace Assets.EffectsScripts
 
             _config.m_current_time += dt;
             _config.m_control_object.SetActive(false);
-            _config.Is_begin = false;
-            _config.Is_end = true;
+            _config.IsBegin = false;
+            _config.IsEnd = true;
             return true;
         }
 
@@ -603,8 +603,8 @@ namespace Assets.EffectsScripts
             }
 
             _config.m_current_time += dt;
-            _config.Is_begin = false;
-            _config.Is_end = true;
+            _config.IsBegin = false;
+            _config.IsEnd = true;
             Image img = _config.m_control_object.GetComponent<Image>();
             if(img != null)
             {
@@ -629,16 +629,16 @@ namespace Assets.EffectsScripts
             _config.m_current_time += dt;
             Image img = _config.m_control_object.GetComponent<Image>();
             
-            if (_config.Is_begin)
+            if (_config.IsBegin)
             {
-                _config.Is_begin = false;
+                _config.IsBegin = false;
                 _config.m_control_object.SetActive(true);
             }
 
             if (_config.m_current_time >= _config.m_max_time)
             {
                 _config.m_current_time = _config.m_max_time;
-                _config.Is_end = true;
+                _config.IsEnd = true;
 
                 if (img != null)
                 {
@@ -680,9 +680,9 @@ namespace Assets.EffectsScripts
 
             _config.m_current_time += dt;
 
-            if (_config.Is_begin)
+            if (_config.IsBegin)
             {
-                _config.Is_begin = false;
+                _config.IsBegin = false;
                 _config.m_control_object.SetActive(true);
 
                 Animator anim_control = _config.m_control_object.GetComponent<Animator>();
@@ -695,7 +695,7 @@ namespace Assets.EffectsScripts
             if (_config.m_current_time >= _config.m_max_time)
             {
                 _config.m_current_time = _config.m_max_time;
-                _config.Is_end = true;
+                _config.IsEnd = true;
 
                 Animator anim_control = _config.m_control_object.GetComponent<Animator>();
                 if (anim_control != null && _config.m_animate_end_name_state != "")
@@ -723,16 +723,16 @@ namespace Assets.EffectsScripts
 
             _config.m_current_time += dt;
 
-            if (_config.Is_begin)
+            if (_config.IsBegin)
             {
-                _config.Is_begin = false;
+                _config.IsBegin = false;
                 _config.m_control_object.SetActive(true);
             }
 
             if (_config.m_current_time >= _config.m_max_time)
             {
                 _config.m_current_time = _config.m_max_time;
-                _config.Is_end = true;
+                _config.IsEnd = true;
 
                 _config.Current_color = _config.m_finish_color;
             }

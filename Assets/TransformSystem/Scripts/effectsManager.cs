@@ -30,7 +30,7 @@ public class effectsManager : MonoBehaviour
 
     public cRunEffect generateEffectFrom(effectConfig _root_config)
     {
-        _root_config.Is_ready_for_remove = false;
+        _root_config.IsReadyForRemove = false;
         _root_config.Delay = _root_config.m_delay_value;
         if (_root_config.m_type != eEffectType.COMPOUND_TYPE)
         {
@@ -39,7 +39,7 @@ public class effectsManager : MonoBehaviour
                 Debug.unityLogger.Log("effectsManager", "Not Compound Effect must have control object: " + _root_config.m_root_name + "/" + _root_config.m_type.ToString());
                 return null;
             }
-            _root_config.Is_visible_state = _root_config.m_control_object.activeSelf;
+            _root_config.IsVisibleState = _root_config.m_control_object.activeSelf;
         }
 
         if (_root_config.m_type == eEffectType.TERMINAL_MOVE_LINE_LOCAL_POS ||
@@ -52,7 +52,10 @@ public class effectsManager : MonoBehaviour
                     _root_config.m_obj_finish_pos.transform.localPosition.y);
             }
 
-            _root_config.m_start_pos = _root_config.m_control_object.transform.localPosition;
+            if(!_root_config.m_is_use_external_start_position)
+            {
+                _root_config.m_start_pos = _root_config.m_control_object.transform.localPosition;
+            }
         }
         else if (_root_config.m_type == eEffectType.TERMINAL_MOVE_LINE_GLOBAL_POS ||
             _root_config.m_type == eEffectType.TERMINAL_MOVE_ARC_GLOBAL_POS)
@@ -64,7 +67,10 @@ public class effectsManager : MonoBehaviour
                     _root_config.m_obj_finish_pos.transform.position.y);
             }
 
-            _root_config.m_start_pos = _root_config.m_control_object.transform.position;
+            if (!_root_config.m_is_use_external_start_position)
+            {
+                _root_config.m_start_pos = _root_config.m_control_object.transform.position;
+            }
         }
         else if (_root_config.m_type == eEffectType.TERMINAL_CHANGE_SPRITE)
         {
@@ -73,7 +79,7 @@ public class effectsManager : MonoBehaviour
                 Image img = _root_config.m_control_object.GetComponent<Image>();
                 if (img != null)
                 {
-                    _root_config.Old_sprite = img.sprite;
+                    _root_config.OldSprite = img.sprite;
                 }
             }
         }
@@ -125,7 +131,7 @@ public class effectsManager : MonoBehaviour
                 var temp = _root_config.m_control_object.transform.eulerAngles;
                 temp.z = _root_config.m_start_rotate_z;
                 _root_config.m_control_object.transform.eulerAngles = temp;
-                _root_config.m_control_object.SetActive(_root_config.Is_visible_state);
+                _root_config.m_control_object.SetActive(_root_config.IsVisibleState);
             }
         }
         else if (_root_config.m_type == eEffectType.TERMINAL_MOVE_LINE_LOCAL_POS ||
@@ -139,7 +145,7 @@ public class effectsManager : MonoBehaviour
                 temp.z = _root_config.m_control_object.transform.localPosition.z;
                 _root_config.m_control_object.transform.localPosition = temp;
 
-                _root_config.m_control_object.SetActive(_root_config.Is_visible_state);
+                _root_config.m_control_object.SetActive(_root_config.IsVisibleState);
             }
         }
         else if (_root_config.m_type == eEffectType.TERMINAL_MOVE_LINE_GLOBAL_POS ||
@@ -153,7 +159,7 @@ public class effectsManager : MonoBehaviour
                 temp.z = _root_config.m_control_object.transform.position.z;
                 _root_config.m_control_object.transform.position = temp;
 
-                _root_config.m_control_object.SetActive(_root_config.Is_visible_state);
+                _root_config.m_control_object.SetActive(_root_config.IsVisibleState);
             }
         }
         else if (_root_config.m_type == eEffectType.TERMINAL_SCALE)
@@ -161,7 +167,7 @@ public class effectsManager : MonoBehaviour
             if (_root_config.m_is_child_node_reset_sign)
             {
                 _root_config.m_control_object.transform.localScale = _root_config.m_start_scale;
-                _root_config.m_control_object.SetActive(_root_config.Is_visible_state);
+                _root_config.m_control_object.SetActive(_root_config.IsVisibleState);
             }
         }
         else if (_root_config.m_type == eEffectType.TERMINAL_ARRIVE)
@@ -183,11 +189,11 @@ public class effectsManager : MonoBehaviour
             if (_root_config.m_is_child_node_reset_sign)
             {
                 var img = _root_config.m_control_object.GetComponent<Image>();
-                if(img!= null && _root_config.Old_sprite != null)
+                if(img!= null && _root_config.OldSprite != null)
                 {
-                    img.sprite = _root_config.Old_sprite;
+                    img.sprite = _root_config.OldSprite;
                 }
-                _root_config.m_control_object.SetActive(_root_config.Is_visible_state);
+                _root_config.m_control_object.SetActive(_root_config.IsVisibleState);
             }
         }
         else if (_root_config.m_type == eEffectType.TERMINAL_FILL_RECT)
@@ -199,7 +205,7 @@ public class effectsManager : MonoBehaviour
                 {
                     img.fillAmount = 0;
                 }
-                _root_config.m_control_object.SetActive(_root_config.Is_visible_state);
+                _root_config.m_control_object.SetActive(_root_config.IsVisibleState);
             }
         }
         else if (_root_config.m_type == eEffectType.TERMINAL_ANIMATION)
@@ -224,7 +230,7 @@ public class effectsManager : MonoBehaviour
                 {
                     img.color = _root_config.m_start_color;
                 }
-                _root_config.m_control_object.SetActive(_root_config.Is_visible_state);
+                _root_config.m_control_object.SetActive(_root_config.IsVisibleState);
             }
         }
 
@@ -260,7 +266,7 @@ public class effectsManager : MonoBehaviour
         {
             ef.Value.update();
 
-            if (ef.Value.getConfig().Is_end)
+            if (ef.Value.getConfig().IsEnd)
             {
                 var config = ef.Value.getConfig();
                 removeEffect(ef.Key);
@@ -326,7 +332,7 @@ public class effectsManager : MonoBehaviour
         {
             effect_config.m_is_loop = _loop_mode;
             cRunEffect root_effect = generateEffectFrom(effect_config);
-            effect_config.Is_main_effect = true;
+            effect_config.IsMainEffect = true;
 
             if (root_effect != null)
             {
@@ -344,7 +350,7 @@ public class effectsManager : MonoBehaviour
             return;
         }
 
-        if (_effect_config.Is_main_effect)
+        if (_effect_config.IsMainEffect)
         {
             _effect_config.m_delay_value = _effect_config.m_delta_time_loop;
             cRunEffect run = generateEffectFrom(_effect_config);
@@ -390,6 +396,33 @@ public class effectsManager : MonoBehaviour
         if (!m_effects.ContainsKey(_key))
         {
             m_effects.Add(_key, _run);
+        }
+    }
+
+    public void addEffectByConfig(string _effect_name, effectConfig effect_config)
+    {
+        if (!m_is_init)
+        {
+            init();
+        }
+
+        if (effect_config == null)
+        {
+            Debug.unityLogger.Log("effectsManager", "Effect was not found: " + _effect_name);
+            return;
+        }
+
+        if (!isEffectRun(_effect_name))
+        {
+            effect_config.m_is_loop = false;
+            cRunEffect root_effect = generateEffectFrom(effect_config);
+            effect_config.IsMainEffect = true;
+
+            if (root_effect != null)
+            {
+                //effect_config.m_final_action += _action;
+                addEffect(effect_config.m_root_name, root_effect);
+            }
         }
     }
 

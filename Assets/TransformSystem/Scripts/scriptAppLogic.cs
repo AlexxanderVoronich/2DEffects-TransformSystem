@@ -72,6 +72,7 @@ public class scriptAppLogic : MonoBehaviour {
         m_group_3.SetActive(false);
         m_group_4.SetActive(false);
         m_group_5.SetActive(false);
+        m_group_6.SetActive(false);
 
         m_current_group_id = _id;
 

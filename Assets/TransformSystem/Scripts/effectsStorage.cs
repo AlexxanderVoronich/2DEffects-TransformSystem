@@ -46,4 +46,24 @@ public class effectsStorage : MonoBehaviour {
         }
         return null;
     }
+
+    public bool addEffectToStorage(string _name, effectConfig _config)
+    {
+        if (!m_storage.ContainsKey(_name))
+        {
+            m_storage[_name] = _config;
+            return true;
+        }
+        return false;
+    }
+
+    public bool removeEffectFromStorage(string _name)
+    {
+        if (m_storage.ContainsKey(_name))
+        {
+            m_storage.Remove(_name);
+            return true;
+        }
+        return false;
+    }
 }

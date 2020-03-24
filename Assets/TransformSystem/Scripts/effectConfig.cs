@@ -32,6 +32,8 @@ public class effectConfig : MonoBehaviour
     public bool m_is_loop = false;
     public float m_delta_time_loop = 0;
     public bool m_is_link_to_last_position = false;
+    public bool m_is_use_external_start_position = false;
+
     public tweenAlgorithmFactory.eTweensAlgorithms m_tween_algorithm_type = tweenAlgorithmFactory.eTweensAlgorithms.Linear;
 
     [Header("Move effect fields")]
@@ -83,122 +85,16 @@ public class effectConfig : MonoBehaviour
     public delegate void EffectFinalAction(effectConfig _config);
     public event EffectFinalAction m_final_action = null;
 
-    public float Delay
-    {
-        get
-        {
-            return m_delay;
-        }
+    public float Delay { get => m_delay; set => m_delay = value; }
+    public bool IsEnd { get => m_is_end; set => m_is_end = value; }
+    public bool IsBegin { get => m_is_begin; set => m_is_begin = value; }
+    public bool IsReadyForRemove { get => m_is_ready_for_remove; set => m_is_ready_for_remove = value; }
+    public bool IsVisibleState { get => m_is_visible_state; set => m_is_visible_state = value; }
+    public Sprite OldSprite { get => m_old_sprite; set => m_old_sprite = value; }
+    public double LastProgress { get => m_last_progress; set => m_last_progress = value; }
+    public bool IsMainEffect { get => m_is_main_effect; set => m_is_main_effect = value; }
+    public float CurrentRotateZ { get => m_current_rotate_z; set => m_current_rotate_z = value; }
 
-        set
-        {
-            m_delay = value;
-        }
-    }
-
-    public bool Is_end
-    {
-        get
-        {
-            return m_is_end;
-        }
-
-        set
-        {
-            m_is_end = value;
-        }
-    }
-
-    public bool Is_begin
-    {
-        get
-        {
-            return m_is_begin;
-        }
-
-        set
-        {
-            m_is_begin = value;
-        }
-    }
-
-    public bool Is_ready_for_remove
-    {
-        get
-        {
-            return m_is_ready_for_remove;
-        }
-
-        set
-        {
-            m_is_ready_for_remove = value;
-        }
-    }
-
-    public bool Is_visible_state
-    {
-        get
-        {
-            return m_is_visible_state;
-        }
-
-        set
-        {
-            m_is_visible_state = value;
-        }
-    }
-
-    public Sprite Old_sprite
-    {
-        get
-        {
-            return m_old_sprite;
-        }
-
-        set
-        {
-            m_old_sprite = value;
-        }
-    }
-
-    public double Last_progress
-    {
-        get
-        {
-            return m_last_progress;
-        }
-
-        set
-        {
-            m_last_progress = value;
-        }
-    }
-
-    public bool Is_main_effect
-    {
-        get
-        {
-            return m_is_main_effect;
-        }
-
-        set
-        {
-            m_is_main_effect = value;
-        }
-    }
-
-    public float Current_rotate_z
-    {
-        get
-        {
-            return m_current_rotate_z;
-        }
-
-        set
-        {
-            m_current_rotate_z = value;
-        }
-    }
 
     public Vector2 Current_scale
     {
@@ -273,14 +169,14 @@ public class effectConfig : MonoBehaviour
 
     public void clearConfig()
     {
-        Is_end = false;
-        Is_begin = true;
+        IsEnd = false;
+        IsBegin = true;
         m_current_time = 0;
         m_delay = m_delay_value;
         m_last_progress = 0.0f;
         Current_pos = m_start_pos;
         Current_scale = m_start_scale;
-        Current_rotate_z = m_start_rotate_z;
+        CurrentRotateZ = m_start_rotate_z;
         m_arc_settings.m_last_progress = 0.0f;
     }
 
