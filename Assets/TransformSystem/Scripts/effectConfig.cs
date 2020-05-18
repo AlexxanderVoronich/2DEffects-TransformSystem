@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using Assets.EffectsScripts;
 
 
@@ -80,6 +81,13 @@ public class effectConfig : MonoBehaviour
     public Color m_finish_color;
     private Color m_current_color;
 
+    [Header("Text Counter fields")]
+    public string m_counter_pattern = "{0}";
+    public int m_start_counter = 0;
+    public int m_finish_counter = 0;
+    private int m_current_counter;
+
+
     private double m_last_progress = 0.0f;
 
     public delegate void EffectFinalAction(effectConfig _config);
@@ -95,71 +103,12 @@ public class effectConfig : MonoBehaviour
     public bool IsMainEffect { get => m_is_main_effect; set => m_is_main_effect = value; }
     public float CurrentRotateZ { get => m_current_rotate_z; set => m_current_rotate_z = value; }
 
-
-    public Vector2 Current_scale
-    {
-        get
-        {
-            return m_current_scale;
-        }
-
-        set
-        {
-            m_current_scale = value;
-        }
-    }
-
-    public Vector2 Current_pos
-    {
-        get
-        {
-            return m_current_pos;
-        }
-
-        set
-        {
-            m_current_pos = value;
-        }
-    }
-
-    public Color Current_color
-    {
-        get
-        {
-            return m_current_color;
-        }
-
-        set
-        {
-            m_current_color = value;
-        }
-    }
-
-    public Color Finish_color
-    {
-        get
-        {
-            return m_finish_color;
-        }
-
-        set
-        {
-            m_finish_color = value;
-        }
-    }
-
-    public Color Start_color
-    {
-        get
-        {
-            return m_start_color;
-        }
-
-        set
-        {
-            m_start_color = value;
-        }
-    }
+    public Vector2 CurrentScale { get => m_current_scale; set => m_current_scale = value; }
+    public Vector2 CurrentPos { get => m_current_pos; set => m_current_pos = value; }
+    public Color CurrentColor { get => m_current_color; set => m_current_color = value; }
+    public Color FinishColor { get => m_finish_color; set => m_finish_color = value; }
+    public Color StartColor { get => m_start_color; set => m_start_color = value; }
+    public int CurrentCounter { get => m_current_counter; set => m_current_counter = value; }
 
     public event InternalTweenAlgorithm m_tween_algorithm = null;
 
@@ -174,8 +123,8 @@ public class effectConfig : MonoBehaviour
         m_current_time = 0;
         m_delay = m_delay_value;
         m_last_progress = 0.0f;
-        Current_pos = m_start_pos;
-        Current_scale = m_start_scale;
+        CurrentPos = m_start_pos;
+        CurrentScale = m_start_scale;
         CurrentRotateZ = m_start_rotate_z;
         m_arc_settings.m_last_progress = 0.0f;
     }

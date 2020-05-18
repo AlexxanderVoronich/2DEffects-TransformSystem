@@ -27,7 +27,8 @@ namespace Assets.EffectsScripts
         TERMINAL_CHANGE_SPRITE,
         TERMINAL_FILL_RECT,
         TERMINAL_ANIMATION,
-        TERMINAL_CHANGE_COLOR
+        TERMINAL_CHANGE_COLOR,
+        TERMINAL_TEXT_COUNTER
     };
 
     public class Utilities

@@ -152,7 +152,7 @@ namespace Assets.EffectsScripts
                     case eEffectType.TERMINAL_MOVE_ARC_LOCAL_POS:
                         {
                             //var temp = m_config.m_control_object.transform.localPosition;
-                            Vector3 temp = m_config.Current_pos;
+                            Vector3 temp = m_config.CurrentPos;
                             temp.z = m_config.m_control_object.transform.localPosition.z;
                             m_config.m_control_object.transform.localPosition = temp;
 
@@ -170,7 +170,7 @@ namespace Assets.EffectsScripts
                     case eEffectType.TERMINAL_MOVE_ARC_GLOBAL_POS:
                         {
                             //var temp = m_config.m_control_object.transform.position;
-                            Vector3 temp = m_config.Current_pos;
+                            Vector3 temp = m_config.CurrentPos;
                             temp.z = m_config.m_control_object.transform.position.z;
                             m_config.m_control_object.transform.position = temp;
 
@@ -186,7 +186,7 @@ namespace Assets.EffectsScripts
 
                     case eEffectType.TERMINAL_SCALE:
                         {
-                            m_config.m_control_object.transform.localScale = m_config.Current_scale;
+                            m_config.m_control_object.transform.localScale = m_config.CurrentScale;
                             break;
                         }
 
@@ -205,7 +205,19 @@ namespace Assets.EffectsScripts
 
                             if (img != null)
                             {
-                               img.color = m_config.Current_color;
+                               img.color = m_config.CurrentColor;
+                            }
+                            break;
+                        }
+
+                    case eEffectType.TERMINAL_TEXT_COUNTER:
+                        {
+                            string pattern = m_config.m_counter_pattern;
+                            string temp = String.Format(pattern, m_config.CurrentCounter);
+                            Text control = m_config.m_control_object.GetComponent<Text>();
+                            if(control != null)
+                            {
+                                control.text = temp;
                             }
                             break;
                         }
@@ -312,6 +324,11 @@ namespace Assets.EffectsScripts
                 effect.m_config.m_mode = eEffectMode.TERMINAL_MODE;
                 effect.m_behaviour = effect.behaviour_type_change_color;
             }
+            else if (_config.m_type == eEffectType.TERMINAL_TEXT_COUNTER)
+            {
+                effect.m_config.m_mode = eEffectMode.TERMINAL_MODE;
+                effect.m_behaviour = effect.behaviour_type_counter;
+            }
             return effect;
         }
 
@@ -345,17 +362,17 @@ namespace Assets.EffectsScripts
                     if (_config.m_type == eEffectType.TERMINAL_MOVE_LINE_LOCAL_POS)
                     {
                         _config.m_start_pos = _config.m_control_object.transform.localPosition;
-                        _config.Current_pos = _config.m_control_object.transform.localPosition;
+                        _config.CurrentPos = _config.m_control_object.transform.localPosition;
                     }
                     else if (_config.m_type == eEffectType.TERMINAL_MOVE_LINE_GLOBAL_POS)
                     {
                         _config.m_start_pos = _config.m_control_object.transform.position;
-                        _config.Current_pos = _config.m_control_object.transform.position;
+                        _config.CurrentPos = _config.m_control_object.transform.position;
                     }
                 }
                 else
                 {
-                    _config.Current_pos = _config.m_start_pos;
+                    _config.CurrentPos = _config.m_start_pos;
                 }
             }
 
@@ -365,7 +382,7 @@ namespace Assets.EffectsScripts
                 _config.IsEnd = true;
 
                 //_config.m_current_scale = _config.m_finish_scale;
-                _config.Current_pos = _config.m_finish_pos;
+                _config.CurrentPos = _config.m_finish_pos;
             }
             else
             {
@@ -382,7 +399,7 @@ namespace Assets.EffectsScripts
                 _config.LastProgress = percents;
 
                 Vector2 delta_pos = main_move * (float)diff_progress;
-                _config.Current_pos += delta_pos;
+                _config.CurrentPos += delta_pos;
             }
             return true;
         }
@@ -412,17 +429,17 @@ namespace Assets.EffectsScripts
                     if (_config.m_type == eEffectType.TERMINAL_MOVE_ARC_LOCAL_POS)
                     {
                         _config.m_start_pos = _config.m_control_object.transform.localPosition;
-                        _config.Current_pos = _config.m_control_object.transform.localPosition;
+                        _config.CurrentPos = _config.m_control_object.transform.localPosition;
                     }
                     else if(_config.m_type == eEffectType.TERMINAL_MOVE_ARC_GLOBAL_POS)
                     {
                         _config.m_start_pos = _config.m_control_object.transform.position;
-                        _config.Current_pos = _config.m_control_object.transform.position;
+                        _config.CurrentPos = _config.m_control_object.transform.position;
                     }
                 }
                 else
                 {
-                    _config.Current_pos = _config.m_start_pos;
+                    _config.CurrentPos = _config.m_start_pos;
                 }
             }
 
@@ -431,7 +448,7 @@ namespace Assets.EffectsScripts
                 _config.m_current_time = _config.m_max_time;
                 _config.IsEnd = true;
 
-                _config.Current_pos = _config.m_finish_pos;
+                _config.CurrentPos = _config.m_finish_pos;
             }
             else
             {
@@ -448,14 +465,14 @@ namespace Assets.EffectsScripts
                 }
 
                 Vector2 delta_pos = main_move * (float)diff_progress_1;
-                _config.Current_pos += delta_pos;
+                _config.CurrentPos += delta_pos;
 
 
                 percents = Math.Sin(percents * Math.PI);
 
                 double diff_progress2 = percents - _config.m_arc_settings.m_last_progress;
                 _config.m_arc_settings.m_last_progress = percents;
-                _config.Current_pos = _config.Current_pos + _config.m_arc_settings.m_arc_shift * (float)diff_progress2;
+                _config.CurrentPos = _config.CurrentPos + _config.m_arc_settings.m_arc_shift * (float)diff_progress2;
             }
             return true;
         }
@@ -530,7 +547,7 @@ namespace Assets.EffectsScripts
                 _config.m_current_time = _config.m_max_time;
                 _config.IsEnd = true;
 
-                _config.Current_scale = _config.m_finish_scale;
+                _config.CurrentScale = _config.m_finish_scale;
             }
             else
             {
@@ -543,7 +560,7 @@ namespace Assets.EffectsScripts
                 }
 
                 Vector2 delta_size = (_config.m_finish_scale - _config.m_start_scale) * percents;
-                _config.Current_scale = _config.m_start_scale + delta_size;
+                _config.CurrentScale = _config.m_start_scale + delta_size;
             }
             return true;
         }
@@ -734,7 +751,7 @@ namespace Assets.EffectsScripts
                 _config.m_current_time = _config.m_max_time;
                 _config.IsEnd = true;
 
-                _config.Current_color = _config.m_finish_color;
+                _config.CurrentColor = _config.m_finish_color;
             }
             else
             {
@@ -747,7 +764,51 @@ namespace Assets.EffectsScripts
                 }
 
                 Color delta_color = (_config.m_finish_color - _config.m_start_color) * percents;
-                _config.Current_color = _config.m_start_color + delta_color;
+                _config.CurrentColor = _config.m_start_color + delta_color;
+            }
+            return true;
+        }
+
+        public bool behaviour_type_counter(effectConfig _config)
+        {
+            var dt = Time.deltaTime;
+
+            if (_config.Delay > 0)
+            {
+                _config.Delay -= dt;
+                if (_config.Delay > 0)
+                {
+                    return false;
+                }
+            }
+
+            _config.m_current_time += dt;
+
+            if (_config.IsBegin)
+            {
+                _config.IsBegin = false;
+                _config.m_control_object.SetActive(true);
+            }
+
+            if (_config.m_current_time >= _config.m_max_time)
+            {
+                _config.m_current_time = _config.m_max_time;
+                _config.IsEnd = true;
+
+                _config.CurrentCounter = _config.m_finish_counter;
+            }
+            else
+            {
+                float delta_time = _config.m_current_time;
+                float percents = delta_time / _config.m_max_time;
+
+                if (m_internal_tween_algorithm != null)
+                {
+                    percents = (float)m_internal_tween_algorithm(percents);
+                }
+
+                int delta_size = (int)((_config.m_finish_counter - _config.m_start_counter) * percents);
+                _config.CurrentCounter= _config.m_start_counter + delta_size;
             }
             return true;
         }

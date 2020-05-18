@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Assets.EffectsScripts;
 using UnityEngine.UI;
@@ -108,6 +110,7 @@ public class effectsManager : MonoBehaviour
                     cRunEffect child_effect = generateEffectFrom(child_config);
                     if (child_effect != null)
                     {
+                        //Debug.unityLogger.Log("Ariman", "generateEffectFrom: add: " + child_config.m_root_name);
                         root_effect.add(child_effect);
                     }
                 }
@@ -117,98 +120,98 @@ public class effectsManager : MonoBehaviour
         return root_effect;
     }
 
-    public static void resetConfig(effectConfig _root_config)
+    public static void resetConfig(effectConfig _config)
     {
-        if(_root_config == null)
+        if(_config == null)
         {
             return;
         }
 
-        if (_root_config.m_type == eEffectType.TERMINAL_ROTATE)
+        if (_config.m_type == eEffectType.TERMINAL_ROTATE)
         {
-            if (_root_config.m_is_child_node_reset_sign)
+            if (_config.m_is_child_node_reset_sign)
             {
-                var temp = _root_config.m_control_object.transform.eulerAngles;
-                temp.z = _root_config.m_start_rotate_z;
-                _root_config.m_control_object.transform.eulerAngles = temp;
-                _root_config.m_control_object.SetActive(_root_config.IsVisibleState);
+                var temp = _config.m_control_object.transform.eulerAngles;
+                temp.z = _config.m_start_rotate_z;
+                _config.m_control_object.transform.eulerAngles = temp;
+                _config.m_control_object.SetActive(_config.IsVisibleState);
             }
         }
-        else if (_root_config.m_type == eEffectType.TERMINAL_MOVE_LINE_LOCAL_POS ||
-            _root_config.m_type == eEffectType.TERMINAL_MOVE_ARC_LOCAL_POS)
+        else if (_config.m_type == eEffectType.TERMINAL_MOVE_LINE_LOCAL_POS ||
+            _config.m_type == eEffectType.TERMINAL_MOVE_ARC_LOCAL_POS)
         {
-            if (_root_config.m_is_child_node_reset_sign)
+            if (_config.m_is_child_node_reset_sign)
             {
                 //_root_config.m_control_object.transform.localPosition = _root_config.m_start_pos;
 
-                Vector3 temp = _root_config.m_start_pos;
-                temp.z = _root_config.m_control_object.transform.localPosition.z;
-                _root_config.m_control_object.transform.localPosition = temp;
+                Vector3 temp = _config.m_start_pos;
+                temp.z = _config.m_control_object.transform.localPosition.z;
+                _config.m_control_object.transform.localPosition = temp;
 
-                _root_config.m_control_object.SetActive(_root_config.IsVisibleState);
+                _config.m_control_object.SetActive(_config.IsVisibleState);
             }
         }
-        else if (_root_config.m_type == eEffectType.TERMINAL_MOVE_LINE_GLOBAL_POS ||
-            _root_config.m_type == eEffectType.TERMINAL_MOVE_ARC_GLOBAL_POS)
+        else if (_config.m_type == eEffectType.TERMINAL_MOVE_LINE_GLOBAL_POS ||
+            _config.m_type == eEffectType.TERMINAL_MOVE_ARC_GLOBAL_POS)
         {
-            if (_root_config.m_is_child_node_reset_sign)
+            if (_config.m_is_child_node_reset_sign)
             {
                 //_root_config.m_control_object.transform.position = _root_config.m_start_pos;
 
-                Vector3 temp = _root_config.m_start_pos;
-                temp.z = _root_config.m_control_object.transform.position.z;
-                _root_config.m_control_object.transform.position = temp;
+                Vector3 temp = _config.m_start_pos;
+                temp.z = _config.m_control_object.transform.position.z;
+                _config.m_control_object.transform.position = temp;
 
-                _root_config.m_control_object.SetActive(_root_config.IsVisibleState);
+                _config.m_control_object.SetActive(_config.IsVisibleState);
             }
         }
-        else if (_root_config.m_type == eEffectType.TERMINAL_SCALE)
+        else if (_config.m_type == eEffectType.TERMINAL_SCALE)
         {
-            if (_root_config.m_is_child_node_reset_sign)
+            if (_config.m_is_child_node_reset_sign)
             {
-                _root_config.m_control_object.transform.localScale = _root_config.m_start_scale;
-                _root_config.m_control_object.SetActive(_root_config.IsVisibleState);
+                _config.m_control_object.transform.localScale = _config.m_start_scale;
+                _config.m_control_object.SetActive(_config.IsVisibleState);
             }
         }
-        else if (_root_config.m_type == eEffectType.TERMINAL_ARRIVE)
+        else if (_config.m_type == eEffectType.TERMINAL_ARRIVE)
         {
-            if (_root_config.m_is_child_node_reset_sign)
+            if (_config.m_is_child_node_reset_sign)
             {
-                _root_config.m_control_object.SetActive(false);
+                _config.m_control_object.SetActive(false);
             }
         }
-        else if (_root_config.m_type == eEffectType.TERMINAL_HIDE)
+        else if (_config.m_type == eEffectType.TERMINAL_HIDE)
         {
-            if (_root_config.m_is_child_node_reset_sign)
+            if (_config.m_is_child_node_reset_sign)
             {
-                _root_config.m_control_object.SetActive(true);
+                _config.m_control_object.SetActive(true);
             }
         }
-        else if (_root_config.m_type == eEffectType.TERMINAL_CHANGE_SPRITE)
+        else if (_config.m_type == eEffectType.TERMINAL_CHANGE_SPRITE)
         {
-            if (_root_config.m_is_child_node_reset_sign)
+            if (_config.m_is_child_node_reset_sign)
             {
-                var img = _root_config.m_control_object.GetComponent<Image>();
-                if(img!= null && _root_config.OldSprite != null)
+                var img = _config.m_control_object.GetComponent<Image>();
+                if(img!= null && _config.OldSprite != null)
                 {
-                    img.sprite = _root_config.OldSprite;
+                    img.sprite = _config.OldSprite;
                 }
-                _root_config.m_control_object.SetActive(_root_config.IsVisibleState);
+                _config.m_control_object.SetActive(_config.IsVisibleState);
             }
         }
-        else if (_root_config.m_type == eEffectType.TERMINAL_FILL_RECT)
+        else if (_config.m_type == eEffectType.TERMINAL_FILL_RECT)
         {
-            if (_root_config.m_is_child_node_reset_sign)
+            if (_config.m_is_child_node_reset_sign)
             {
-                var img = _root_config.m_control_object.GetComponent<Image>();
+                var img = _config.m_control_object.GetComponent<Image>();
                 if (img != null)
                 {
                     img.fillAmount = 0;
                 }
-                _root_config.m_control_object.SetActive(_root_config.IsVisibleState);
+                _config.m_control_object.SetActive(_config.IsVisibleState);
             }
         }
-        else if (_root_config.m_type == eEffectType.TERMINAL_ANIMATION)
+        else if (_config.m_type == eEffectType.TERMINAL_ANIMATION)
         {
             /*if (_root_config.m_is_child_node_reset_sign)
             {
@@ -220,26 +223,40 @@ public class effectsManager : MonoBehaviour
                 _root_config.m_control_object.SetActive(_root_config.Is_visible_state);
             }*/
         }
-        else if (_root_config.m_type == eEffectType.TERMINAL_CHANGE_COLOR)
+        else if (_config.m_type == eEffectType.TERMINAL_CHANGE_COLOR)
         {
-            if (_root_config.m_is_child_node_reset_sign)
+            if (_config.m_is_child_node_reset_sign)
             {
-                var img = _root_config.m_control_object.GetComponent<Image>();
+                var img = _config.m_control_object.GetComponent<Image>();
 
                 if (img != null)
                 {
-                    img.color = _root_config.m_start_color;
+                    img.color = _config.m_start_color;
                 }
-                _root_config.m_control_object.SetActive(_root_config.IsVisibleState);
+                _config.m_control_object.SetActive(_config.IsVisibleState);
+            }
+        }
+        else if (_config.m_type == eEffectType.TERMINAL_TEXT_COUNTER)
+        {
+            if (_config.m_is_child_node_reset_sign)
+            {
+                string pattern = _config.m_counter_pattern;
+                string temp = String.Format(pattern, _config.m_start_counter);
+                Text control = _config.m_control_object.GetComponent<Text>();
+                if (control != null)
+                {
+                    control.text = temp;
+                }
+                _config.m_control_object.SetActive(_config.IsVisibleState);
             }
         }
 
-        _root_config.clearConfig();
+        _config.clearConfig();
 
-        foreach (Transform child in _root_config.gameObject.transform)
+        foreach (Transform child in _config.gameObject.transform)
         {
             effectConfig child_config = child.GetComponent<effectConfig>();
-            if (child_config != null)
+            if (child_config != null && !child_config.m_is_switch_off)
             {
                 resetConfig(child_config);
             }
