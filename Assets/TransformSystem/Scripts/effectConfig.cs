@@ -136,5 +136,10 @@ public class effectConfig : MonoBehaviour
             m_final_action.Invoke(this);
         }
     }
+	
+	public void delegateReset()
+    {
+        m_final_action = null;
+    }
 
 }

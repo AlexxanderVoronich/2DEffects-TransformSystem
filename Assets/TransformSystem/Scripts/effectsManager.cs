@@ -353,6 +353,7 @@ public class effectsManager : MonoBehaviour
 
             if (root_effect != null)
             {
+				effect_config.delegateReset();
                 effect_config.m_final_action += _action;
                 addEffect(effect_config.m_root_name, root_effect);
             }
