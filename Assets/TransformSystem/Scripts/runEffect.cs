@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace Assets.EffectsScripts
 {
@@ -141,6 +142,13 @@ namespace Assets.EffectsScripts
             {
                 switch (m_config.m_type)
                 {
+                    case eEffectType.TERMINAL_LOCAL_ROTATE:
+                        {
+                            var temp = m_config.m_control_object.transform.localEulerAngles;
+                            temp.z = m_config.CurrentRotateZ;
+                            m_config.m_control_object.transform.localEulerAngles = temp;
+                            break;
+                        }
                     case eEffectType.TERMINAL_ROTATE:
                         {
                             var temp = m_config.m_control_object.transform.eulerAngles;
@@ -151,17 +159,10 @@ namespace Assets.EffectsScripts
                     case eEffectType.TERMINAL_MOVE_LINE_LOCAL_POS:
                     case eEffectType.TERMINAL_MOVE_ARC_LOCAL_POS:
                         {
-                            //var temp = m_config.m_control_object.transform.localPosition;
-                            Vector3 temp = m_config.CurrentPos;
-                            temp.z = m_config.m_control_object.transform.localPosition.z;
-                            m_config.m_control_object.transform.localPosition = temp;
-
-                            //var point_on_screen = Camera.main.WorldToScreenPoint(m_config.m_control_object.transform.position);
-                            var point_on_screen = m_config.m_control_object.transform.position;
-                            point_on_screen.z = 0;
+                            m_config.m_control_object.transform.localPosition = m_config.CurrentPos;
                             if (m_trail_system != null)
                             {
-                                m_trail_system.AddPointToTrail(m_trail_id, point_on_screen);
+                                m_trail_system.AddPointToTrail(m_trail_id, m_config.CurrentPos);
                             }
                             break;
                         }
@@ -169,17 +170,10 @@ namespace Assets.EffectsScripts
                     case eEffectType.TERMINAL_MOVE_LINE_GLOBAL_POS:
                     case eEffectType.TERMINAL_MOVE_ARC_GLOBAL_POS:
                         {
-                            //var temp = m_config.m_control_object.transform.position;
-                            Vector3 temp = m_config.CurrentPos;
-                            temp.z = m_config.m_control_object.transform.position.z;
-                            m_config.m_control_object.transform.position = temp;
-
-                            //var point_on_screen = Camera.main.WorldToScreenPoint(m_config.m_control_object.transform.position);
-                            var point_on_screen = m_config.m_control_object.transform.position;
-                            point_on_screen.z = 0;
+                            m_config.m_control_object.transform.position = m_config.CurrentPos;
                             if (m_trail_system != null)
                             {
-                                m_trail_system.AddPointToTrail(m_trail_id, point_on_screen);
+                                m_trail_system.AddPointToTrail(m_trail_id, m_config.CurrentPos);
                             }
                             break;
                         }
@@ -214,10 +208,22 @@ namespace Assets.EffectsScripts
                         {
                             string pattern = m_config.m_counter_pattern;
                             string temp = String.Format(pattern, m_config.CurrentCounter);
-                            Text control = m_config.m_control_object.GetComponent<Text>();
-                            if(control != null)
+
+                            if (!m_config.m_is_text_pro)
                             {
-                                control.text = temp;
+                                Text control = m_config.m_control_object.GetComponent<Text>();
+                                if (control != null)
+                                {
+                                    control.text = temp;
+                                }
+                            }
+                            else
+                            {
+                                TextMeshProUGUI control = m_config.m_control_object.GetComponent<TextMeshProUGUI>();
+                                if (control != null)
+                                {
+                                    control.text = temp;
+                                }
                             }
                             break;
                         }
@@ -244,7 +250,7 @@ namespace Assets.EffectsScripts
             {
 
             }
-            else if (_config.m_type == eEffectType.TERMINAL_ROTATE)
+            else if (_config.m_type == eEffectType.TERMINAL_ROTATE || _config.m_type == eEffectType.TERMINAL_LOCAL_ROTATE)
             {
                 effect.m_config.m_mode = eEffectMode.TERMINAL_MODE;
                 effect.m_behaviour = effect.behaviour_type_rotate;
@@ -380,8 +386,6 @@ namespace Assets.EffectsScripts
             {
                 _config.m_current_time = _config.m_max_time;
                 _config.IsEnd = true;
-
-                //_config.m_current_scale = _config.m_finish_scale;
                 _config.CurrentPos = _config.m_finish_pos;
             }
             else
@@ -398,7 +402,7 @@ namespace Assets.EffectsScripts
                 double diff_progress = percents - _config.LastProgress;
                 _config.LastProgress = percents;
 
-                Vector2 delta_pos = main_move * (float)diff_progress;
+                Vector3 delta_pos = main_move * (float)diff_progress;
                 _config.CurrentPos += delta_pos;
             }
             return true;
@@ -464,7 +468,7 @@ namespace Assets.EffectsScripts
                     percents = m_internal_tween_algorithm(percents);
                 }
 
-                Vector2 delta_pos = main_move * (float)diff_progress_1;
+                Vector3 delta_pos = main_move * (float)diff_progress_1;
                 _config.CurrentPos += delta_pos;
 
 
@@ -548,6 +552,14 @@ namespace Assets.EffectsScripts
                 _config.IsEnd = true;
 
                 _config.CurrentScale = _config.m_finish_scale;
+
+                if (m_internal_tween_algorithm != null)
+                {
+                    float percents = (float)m_internal_tween_algorithm(1);
+                    _config.LastProgress = percents;
+                    Vector2 delta_size = (_config.m_finish_scale - _config.m_start_scale) * percents;
+                    _config.CurrentScale = _config.m_start_scale + delta_size;
+                }
             }
             else
             {
@@ -795,7 +807,10 @@ namespace Assets.EffectsScripts
                 _config.m_current_time = _config.m_max_time;
                 _config.IsEnd = true;
 
-                _config.CurrentCounter = _config.m_finish_counter;
+                if (_config.m_is_show_last_value)
+                {
+                    _config.CurrentCounter = _config.m_finish_counter;
+                }
             }
             else
             {

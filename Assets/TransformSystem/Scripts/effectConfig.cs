@@ -38,14 +38,14 @@ public class effectConfig : MonoBehaviour
     public tweenAlgorithmFactory.eTweensAlgorithms m_tween_algorithm_type = tweenAlgorithmFactory.eTweensAlgorithms.Linear;
 
     [Header("Move effect fields")]
-    public Vector2 m_start_pos;
-    public Vector2 m_finish_pos;
-    private Vector2 m_current_pos;
+    public Vector3 m_start_pos;
+    public Vector3 m_finish_pos;
+    private Vector3 m_current_pos;
     [System.Serializable]
     public class ArcSettings
     {
         [SerializeField]
-        public Vector2 m_arc_shift;
+        public Vector3 m_arc_shift;
         [SerializeField]
         public Vector3 m_parabala_params = new Vector3(-0.4f, 0.4f, 0.0f);
         [SerializeField]
@@ -82,11 +82,12 @@ public class effectConfig : MonoBehaviour
     private Color m_current_color;
 
     [Header("Text Counter fields")]
+    public bool m_is_text_pro = false;
     public string m_counter_pattern = "{0}";
     public int m_start_counter = 0;
     public int m_finish_counter = 0;
     private int m_current_counter;
-
+    public bool m_is_show_last_value = true;
 
     private double m_last_progress = 0.0f;
 
@@ -104,7 +105,7 @@ public class effectConfig : MonoBehaviour
     public float CurrentRotateZ { get => m_current_rotate_z; set => m_current_rotate_z = value; }
 
     public Vector2 CurrentScale { get => m_current_scale; set => m_current_scale = value; }
-    public Vector2 CurrentPos { get => m_current_pos; set => m_current_pos = value; }
+    public Vector3 CurrentPos { get => m_current_pos; set => m_current_pos = value; }
     public Color CurrentColor { get => m_current_color; set => m_current_color = value; }
     public Color FinishColor { get => m_finish_color; set => m_finish_color = value; }
     public Color StartColor { get => m_start_color; set => m_start_color = value; }

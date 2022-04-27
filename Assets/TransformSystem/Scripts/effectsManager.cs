@@ -50,8 +50,8 @@ public class effectsManager : MonoBehaviour
 
             if (_root_config.m_obj_finish_pos != null)
             {
-                _root_config.m_finish_pos = new Vector2(_root_config.m_obj_finish_pos.transform.localPosition.x,
-                    _root_config.m_obj_finish_pos.transform.localPosition.y);
+                _root_config.m_finish_pos = new Vector3(_root_config.m_obj_finish_pos.transform.localPosition.x,
+                    _root_config.m_obj_finish_pos.transform.localPosition.y, _root_config.m_obj_finish_pos.transform.localPosition.z);
             }
 
             if(!_root_config.m_is_use_external_start_position)
@@ -65,8 +65,8 @@ public class effectsManager : MonoBehaviour
 
             if (_root_config.m_obj_finish_pos != null)
             {
-                _root_config.m_finish_pos = new Vector2(_root_config.m_obj_finish_pos.transform.position.x,
-                    _root_config.m_obj_finish_pos.transform.position.y);
+                _root_config.m_finish_pos = new Vector3(_root_config.m_obj_finish_pos.transform.position.x,
+                    _root_config.m_obj_finish_pos.transform.position.y, _root_config.m_obj_finish_pos.transform.position.z);
             }
 
             if (!_root_config.m_is_use_external_start_position)
@@ -127,7 +127,17 @@ public class effectsManager : MonoBehaviour
             return;
         }
 
-        if (_config.m_type == eEffectType.TERMINAL_ROTATE)
+        if (_config.m_type == eEffectType.TERMINAL_LOCAL_ROTATE)
+        {
+            if (_config.m_is_child_node_reset_sign)
+            {
+                var temp = _config.m_control_object.transform.localEulerAngles;
+                temp.z = _config.m_start_rotate_z;
+                _config.m_control_object.transform.localEulerAngles = temp;
+                _config.m_control_object.SetActive(_config.IsVisibleState);
+            }
+        }
+        else if (_config.m_type == eEffectType.TERMINAL_ROTATE)
         {
             if (_config.m_is_child_node_reset_sign)
             {
@@ -142,8 +152,6 @@ public class effectsManager : MonoBehaviour
         {
             if (_config.m_is_child_node_reset_sign)
             {
-                //_root_config.m_control_object.transform.localPosition = _root_config.m_start_pos;
-
                 Vector3 temp = _config.m_start_pos;
                 temp.z = _config.m_control_object.transform.localPosition.z;
                 _config.m_control_object.transform.localPosition = temp;
@@ -156,12 +164,7 @@ public class effectsManager : MonoBehaviour
         {
             if (_config.m_is_child_node_reset_sign)
             {
-                //_root_config.m_control_object.transform.position = _root_config.m_start_pos;
-
-                Vector3 temp = _config.m_start_pos;
-                temp.z = _config.m_control_object.transform.position.z;
-                _config.m_control_object.transform.position = temp;
-
+                _config.m_control_object.transform.position = _config.m_start_pos;
                 _config.m_control_object.SetActive(_config.IsVisibleState);
             }
         }
@@ -270,7 +273,17 @@ public class effectsManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(m_effects_for_replace.Count > 0)
+        if (!m_is_init)
+        {
+            return;
+        }
+
+        if (m_effects == null)
+            return;
+        if (m_effects_for_replace == null || m_effects_for_break == null)
+            return;
+
+        if (m_effects_for_replace.Count > 0)
         {
             foreach(var ef in m_effects_for_replace)
             {
@@ -324,7 +337,7 @@ public class effectsManager : MonoBehaviour
             m_effects_for_break = new Dictionary<string, effectConfig>();
 
             m_effects_storage = GetComponent<effectsStorage>();
-            Utilities.setTrailSystem(m_trail_system);
+            Assets.EffectsScripts.Utilities.setTrailSystem(m_trail_system);
             m_is_init = true;
         }
     }
@@ -347,7 +360,10 @@ public class effectsManager : MonoBehaviour
 
         if (!isEffectRun(_effect_name))
         {
-            effect_config.m_is_loop = _loop_mode;
+            if (!effect_config.m_is_loop)
+            {
+                effect_config.m_is_loop = _loop_mode;
+            }
             cRunEffect root_effect = generateEffectFrom(effect_config);
             effect_config.IsMainEffect = true;
 
@@ -357,6 +373,10 @@ public class effectsManager : MonoBehaviour
                 effect_config.m_final_action += _action;
                 addEffect(effect_config.m_root_name, root_effect);
             }
+        }
+        else
+        {
+            Debug.unityLogger.Log("effectsManager", "Effect has already ran" + _effect_name);
         }
     }
 

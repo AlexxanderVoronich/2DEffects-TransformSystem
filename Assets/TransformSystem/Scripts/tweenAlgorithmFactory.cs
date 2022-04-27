@@ -11,7 +11,8 @@ namespace Assets.EffectsScripts
             Linear,
             Elastic,
             InvertedParabola,
-            ParabolaWithParameters
+            ParabolaWithParameters,
+            HalfLinear
         }
 
 
@@ -22,27 +23,26 @@ namespace Assets.EffectsScripts
                 case eTweensAlgorithms.Linear:
                     {
                         return null;
-                        break;
                     }
                 case eTweensAlgorithms.Elastic:
                     {
                         return simpleElasticMethod;
-                        break;
                     }
                 case eTweensAlgorithms.InvertedParabola:
                     {
                         return invertedParabola;
-                        break;
                     }
                 case eTweensAlgorithms.ParabolaWithParameters:
                     {
                         return null;
-                        break;
+                    }
+                case eTweensAlgorithms.HalfLinear:
+                    {
+                        return halfLinear;
                     }
                 default:
                     {
                         return null;
-                        break;
                     }
             }
         }
@@ -64,6 +64,18 @@ namespace Assets.EffectsScripts
                 return (-4) * (inpart - 0.5f) * (inpart - 0.5f) + 1;
             }
             return 1.0f;
+        }
+
+        public static double halfLinear(double inpart)
+        {
+            if (inpart < 0.5f)
+            {
+                return inpart;
+            }
+            else
+            {
+                return (1.0f - inpart);
+            }
         }
 
         public static double parabolaWithParameters(double inpart, float _a, float _b, float _c)
