@@ -91,8 +91,9 @@ public class effectConfig : MonoBehaviour
 
     private double m_last_progress = 0.0f;
 
-    public delegate void EffectFinalAction(effectConfig _config);
-    public event EffectFinalAction m_final_action = null;
+    public delegate void EffectAction(effectConfig _config);
+    public event EffectAction m_final_action = null;
+    public event EffectAction m_before_action = null;
 
     public float Delay { get => m_delay; set => m_delay = value; }
     public bool IsEnd { get => m_is_end; set => m_is_end = value; }
@@ -130,17 +131,20 @@ public class effectConfig : MonoBehaviour
         m_arc_settings.m_last_progress = 0.0f;
     }
 
-    public void invokeLast()
+    public void invokeBeforeAction()
     {
-        if (m_final_action != null)
-        {
-            m_final_action.Invoke(this);
-        }
+        m_before_action?.Invoke(this);
     }
-	
-	public void delegateReset()
+
+    public void invokeFinalAction()
+    {
+        m_final_action?.Invoke(this);
+    }
+
+    public void eventsReset()
     {
         m_final_action = null;
+        m_before_action = null;
     }
 
 }

@@ -15,6 +15,8 @@ public class effectsManager : MonoBehaviour
     private Dictionary<string, cRunEffect> m_effects = null;
     private Dictionary<string, cRunEffect> m_effects_for_replace = null;
     private Dictionary<string, effectConfig> m_effects_for_break = null;
+    private Queue<(string effect_name, effectConfig.EffectAction before_action, effectConfig.EffectAction after_action)> m_delay_effects= null;
+
     private bool m_is_init = false;
 
     public bool Is_trail_system_switch_on
@@ -300,7 +302,7 @@ public class effectsManager : MonoBehaviour
             {
                 var config = ef.Value.getConfig();
                 removeEffect(ef.Key);
-                config.invokeLast();
+                config.invokeFinalAction();
                 config.clearConfig();
 
                 if (config.m_is_root_reset_permission)
@@ -316,7 +318,7 @@ public class effectsManager : MonoBehaviour
             foreach (var ef in m_effects_for_break)
             {
                 removeEffect(ef.Key);
-                ef.Value.invokeLast();
+                ef.Value.invokeFinalAction();
                 resetConfig(ef.Value);
             }
             m_effects_for_break.Clear();
@@ -325,7 +327,36 @@ public class effectsManager : MonoBehaviour
 
     void Update()
     {
+        if (m_delay_effects.Count > 0)
+        {
+            var tuple = m_delay_effects.Peek();
+            var effect_name = tuple.effect_name;
+            if (!isEffectRun(effect_name))
+            {
+                m_delay_effects.Dequeue();
 
+                var effect_config = m_effects_storage.getEffect(effect_name);
+
+                if (effect_config == null)
+                {
+                    Debug.unityLogger.Log("effectsManager::m_delay_effects", "Effect was not found: " + effect_name);
+                    return;
+                }
+
+                cRunEffect root_effect = generateEffectFrom(effect_config);
+                effect_config.IsMainEffect = true;
+
+                if (root_effect != null)
+                {
+                    effect_config.eventsReset();
+                    effect_config.m_before_action += tuple.before_action;
+                    effect_config.m_final_action += tuple.after_action;
+
+                    effect_config.invokeBeforeAction();
+                    addEffect(effect_config.m_root_name, root_effect);
+                }
+            }
+        }
     }
 
     public void init()
@@ -335,7 +366,7 @@ public class effectsManager : MonoBehaviour
             m_effects = new Dictionary<string, cRunEffect>();
             m_effects_for_replace = new Dictionary<string, cRunEffect>();
             m_effects_for_break = new Dictionary<string, effectConfig>();
-
+            m_delay_effects = new Queue<(string effect_name, effectConfig.EffectAction before_action, effectConfig.EffectAction after_action)>();
             m_effects_storage = GetComponent<effectsStorage>();
             Assets.EffectsScripts.Utilities.setTrailSystem(m_trail_system);
             m_is_init = true;
@@ -343,23 +374,23 @@ public class effectsManager : MonoBehaviour
     }
 
 
-    public void startEffectForName(string _effect_name, effectConfig.EffectFinalAction _action, bool _loop_mode = false)
+    public void startEffectForName(string _effect_name, effectConfig.EffectAction _action, bool _loop_mode = false)
     {
         if (!m_is_init)
         {
             init();
         }
 
-        var effect_config = m_effects_storage.getEffect(_effect_name);
-
-        if(effect_config == null)
-        {
-            Debug.unityLogger.Log("effectsManager", "Effect was not found: " + _effect_name);
-            return;
-        }
-
         if (!isEffectRun(_effect_name))
         {
+            var effect_config = m_effects_storage.getEffect(_effect_name);
+
+            if (effect_config == null)
+            {
+                Debug.unityLogger.Log("effectsManager::startEffectForName", "Effect was not found: " + _effect_name);
+                return;
+            }
+
             if (!effect_config.m_is_loop)
             {
                 effect_config.m_is_loop = _loop_mode;
@@ -369,7 +400,7 @@ public class effectsManager : MonoBehaviour
 
             if (root_effect != null)
             {
-				effect_config.delegateReset();
+				effect_config.eventsReset();
                 effect_config.m_final_action += _action;
                 addEffect(effect_config.m_root_name, root_effect);
             }
@@ -377,6 +408,42 @@ public class effectsManager : MonoBehaviour
         else
         {
             Debug.unityLogger.Log("effectsManager", "Effect has already ran" + _effect_name);
+        }
+    }
+
+    public void startEffectForNameInQueue(string _effect_name, effectConfig.EffectAction _before_action, effectConfig.EffectAction _after_action)
+    {
+        if (!m_is_init)
+        {
+            init();
+        }
+
+        if (!isEffectRun(_effect_name))
+        {
+            var effect_config = m_effects_storage.getEffect(_effect_name);
+
+            if (effect_config == null)
+            {
+                Debug.unityLogger.Log("effectsManager::startEffectForNameInQueue", "Effect was not found: " + _effect_name);
+                return;
+            }
+
+            cRunEffect root_effect = generateEffectFrom(effect_config);
+            effect_config.IsMainEffect = true;
+
+            if (root_effect != null)
+            {
+                effect_config.eventsReset();
+                effect_config.m_before_action += _before_action;
+                effect_config.m_final_action += _after_action;
+
+                effect_config.invokeBeforeAction();
+                addEffect(effect_config.m_root_name, root_effect);
+            }
+        }
+        else
+        {
+            m_delay_effects.Enqueue((_effect_name, _before_action, _after_action));
         }
     }
 
